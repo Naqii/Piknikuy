@@ -1,7 +1,8 @@
-package com.example.piknikuy
+package com.example.piknikuy.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.piknikuy.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
