@@ -13,4 +13,7 @@
     <string name="title">Nama</string>
     <string name="location">location</string>
     <string name="detail_resto">Detail Restaurant</string>
+    <string name="picture">Picture</string>
+    <string name="name">Resto Name</string>
+    <string name="description">Description</string>
 </resources>
