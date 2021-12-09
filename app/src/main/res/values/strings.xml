@@ -10,4 +10,6 @@
     <string name="top_visitor">Top Visitor</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Nama</string>
+    <string name="location">location</string>
 </resources>
