@@ -12,4 +12,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title">Nama</string>
     <string name="location">location</string>
+    <string name="detail_resto">Detail Restaurant</string>
 </resources>
