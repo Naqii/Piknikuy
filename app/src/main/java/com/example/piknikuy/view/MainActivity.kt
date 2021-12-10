@@ -8,7 +8,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.piknikuy.R
 import com.example.piknikuy.adapter.SectionsPagerAdapter
 import com.example.piknikuy.databinding.ActivityMainBinding
-import com.example.piknikuy.view.fragment.RestoFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -41,6 +40,14 @@ class MainActivity : AppCompatActivity() {
     private fun btnMenu() {
         activityMainBinding.btnResto.setOnClickListener {
             val intent = Intent(this, RestoActivity::class.java)
+            startActivity(intent)
+        }
+        activityMainBinding.btnHotel.setOnClickListener {
+            val intent = Intent(this, HotelActivity::class.java)
+            startActivity(intent)
+        }
+        activityMainBinding.btnWisata.setOnClickListener {
+            val intent = Intent(this, WisataActivity::class.java)
             startActivity(intent)
         }
     }
