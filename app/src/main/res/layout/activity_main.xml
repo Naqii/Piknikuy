@@ -4,15 +4,197 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".view.MainActivity">
 
+
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/let_s_piknikuy"
+        android:textColor="@color/gray2"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/white"
+        android:textCursorDrawable="@null"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:queryBackground="@null"
+        app:queryHint="@string/search_here"
+        app:showDividers="end"
+        android:backgroundTint="@color/orange"/>
+
+    <Button
+        android:id="@+id/btn_hotel"
+        android:layout_width="75dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/white"
+        app:icon="@drawable/ic_hotel"
+        app:iconSize="45dp"
+        app:iconTint="@color/biru_tua"
+        app:layout_constraintEnd_toStartOf="@+id/btn_resto"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tv_hotel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/hotel"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/btn_hotel"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="@+id/btn_hotel"
+        app:layout_constraintTop_toBottomOf="@+id/btn_hotel" />
+
+    <Button
+        android:id="@+id/btn_city"
+        android:layout_width="75dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/white"
+        android:textColor="#00796B"
+        app:icon="@drawable/ic_city"
+        app:iconSize="45dp"
+        app:iconTint="@color/biru_tua"
+        app:layout_constraintEnd_toStartOf="@+id/btn_maps"
+        app:layout_constraintStart_toEndOf="@+id/btn_resto"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tv_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/city"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/btn_city"
+        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintStart_toStartOf="@+id/btn_city"
+        app:layout_constraintTop_toBottomOf="@+id/btn_city" />
+
+    <TextView
+        android:id="@+id/tv_resto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/resto"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/btn_resto"
+        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintStart_toStartOf="@+id/btn_resto"
+        app:layout_constraintTop_toBottomOf="@+id/btn_resto" />
+
+    <Button
+        android:id="@+id/btn_maps"
+        android:layout_width="75dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/white"
+        app:icon="@drawable/ic_map"
+        app:iconSize="45dp"
+        app:iconTint="@color/biru_tua"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_city"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tv_travel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/maps"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/btn_maps"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="@+id/btn_maps"
+        app:layout_constraintTop_toBottomOf="@+id/btn_maps" />
+
+    <Button
+        android:id="@+id/btn_resto"
+        android:layout_width="75dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/white"
+        app:icon="@drawable/ic_restaurant"
+        app:iconSize="45dp"
+        app:iconTint="@color/biru_tua"
+        app:layout_constraintEnd_toStartOf="@+id/btn_city"
+        app:layout_constraintStart_toEndOf="@+id/btn_hotel"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="16dp"
+        android:background="@color/biru_tua"
+        android:minHeight="?actionBarSize"
+        app:layout_constraintTop_toBottomOf="@+id/tv_resto"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="fixed"
+        app:tabRippleColor="@null"
+        app:tabSelectedTextColor="@color/white"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabs"
+        app:layout_constraintVertical_bias="0.042"
+        tools:ignore="MissingConstraints">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

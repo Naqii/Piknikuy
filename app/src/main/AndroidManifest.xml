@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.piknikuy">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Piknikuy"
         tools:ignore="AllowBackup">
+        <activity
+            android:name=".view.RestoActivity"
+            android:exported="false" />
         <activity
             android:name=".view.MainActivity"
             android:exported="true" />
