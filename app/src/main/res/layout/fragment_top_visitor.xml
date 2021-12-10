@@ -9,7 +9,7 @@
         android:id="@+id/list_topvisitor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem=""/>
+        tools:listitem="@layout/item_top_visitor"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
