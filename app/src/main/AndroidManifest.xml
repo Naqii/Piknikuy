@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Piknikuy"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".view.WisataActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.HotelActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.RestoActivity"
             android:exported="false" />
         <activity

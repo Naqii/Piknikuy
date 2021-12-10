@@ -4,7 +4,7 @@
     <string name="search_here">search here</string>
     <string name="hotel">Hotel</string>
     <string name="resto">Resto</string>
-    <string name="city">City</string>
+    <string name="wisata">Wisata</string>
     <string name="maps">Maps</string>
     <string name="trend">Trend</string>
     <string name="top_visitor">Top Visitor</string>
@@ -16,4 +16,5 @@
     <string name="picture">Picture</string>
     <string name="name">Resto Name</string>
     <string name="description">Description</string>
+    <string name="todetail">toDetail</string>
 </resources>

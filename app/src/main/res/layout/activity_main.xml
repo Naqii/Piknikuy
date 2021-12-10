@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray"
+    android:id="@+id/container"
     tools:context=".view.MainActivity">
 
 
@@ -71,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_hotel" />
 
     <Button
-        android:id="@+id/btn_city"
+        android:id="@+id/btn_wisata"
         android:layout_width="75dp"
         android:layout_height="66dp"
         android:layout_marginStart="10dp"
@@ -79,7 +80,7 @@
         android:layout_marginEnd="10dp"
         android:backgroundTint="@color/white"
         android:textColor="#00796B"
-        app:icon="@drawable/ic_city"
+        app:icon="@drawable/ic_wisata"
         app:iconSize="45dp"
         app:iconTint="@color/biru_tua"
         app:layout_constraintEnd_toStartOf="@+id/btn_maps"
@@ -88,17 +89,17 @@
         tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/tv_city"
+        android:id="@+id/tv_wisata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="@string/city"
+        android:text="@string/wisata"
         android:textSize="20sp"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/btn_city"
+        app:layout_constraintEnd_toEndOf="@+id/btn_wisata"
         app:layout_constraintHorizontal_bias="0.609"
-        app:layout_constraintStart_toStartOf="@+id/btn_city"
-        app:layout_constraintTop_toBottomOf="@+id/btn_city" />
+        app:layout_constraintStart_toStartOf="@+id/btn_wisata"
+        app:layout_constraintTop_toBottomOf="@+id/btn_wisata" />
 
     <TextView
         android:id="@+id/tv_resto"
@@ -125,7 +126,7 @@
         app:iconSize="45dp"
         app:iconTint="@color/biru_tua"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_city"
+        app:layout_constraintStart_toEndOf="@+id/btn_wisata"
         app:layout_constraintTop_toBottomOf="@+id/search"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -153,7 +154,7 @@
         app:icon="@drawable/ic_restaurant"
         app:iconSize="45dp"
         app:iconTint="@color/biru_tua"
-        app:layout_constraintEnd_toStartOf="@+id/btn_city"
+        app:layout_constraintEnd_toStartOf="@+id/btn_wisata"
         app:layout_constraintStart_toEndOf="@+id/btn_hotel"
         app:layout_constraintTop_toBottomOf="@+id/search"
         tools:ignore="SpeakableTextPresentCheck" />
