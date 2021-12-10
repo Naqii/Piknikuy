@@ -1,4 +1,4 @@
-package com.example.piknikuy.fragment
+package com.example.piknikuy.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
