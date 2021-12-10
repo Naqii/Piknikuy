@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun btnMenu() {
         activityMainBinding.btnResto.setOnClickListener {
-            val intent = Intent(this, RestoFragment::class.java)
+            val intent = Intent(this, RestoActivity::class.java)
             startActivity(intent)
         }
     }
