@@ -4,41 +4,102 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.piknikuy.api.ApiConfig
+import com.example.piknikuy.database.PiknikuyDatabase
+import com.example.piknikuy.helper.Helper
 import com.example.piknikuy.model.ModelResto
-import com.loopj.android.http.AsyncHttpClient
-import com.loopj.android.http.AsyncHttpClient.log
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
-import org.json.JSONArray
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.json.JSONObject
 import java.lang.Exception
 
 class RestoViewModel: ViewModel() {
-    val listResto = MutableLiveData<ArrayList<ModelResto>>()
 
-    fun setRestoList(){
-        val listItem = ArrayList<ModelResto>()
-        val client = AsyncHttpClient()
-        val url = "https://restaurant-api.dicoding.dev/list"
-        client.get(url, object : AsyncHttpResponseHandler(){
+    private var database = PiknikuyDatabase.getDatabase().restoDao()
+
+    private var _listResto = MutableLiveData<ArrayList<ModelResto>>()
+    val listResto : LiveData<ArrayList<ModelResto>> = _listResto
+
+    private var _resto = MutableLiveData<ModelResto>()
+    val resto : LiveData<ModelResto> =_resto
+
+    private var _isFavorite = MutableLiveData<Boolean>()
+    val isFavorite : LiveData<Boolean> = _isFavorite
+
+    private var _favorite = database.select()
+    val favorite : LiveData<List<ModelResto>> = _favorite
+
+    fun setSearchResto(query: String? = null) {
+        if(query == null){
+            ApiConfig.getListResto( object: AsyncHttpResponseHandler(){
+                override fun onSuccess(
+                    statusCode: Int,
+                    headers: Array<Header>,
+                    responseBody: ByteArray
+                ) {
+                    val result = String(responseBody)
+                    try {
+                        val responseObject = JSONObject(result)
+                        val restoArray = responseObject.getJSONArray("restaurants")
+                        _listResto.postValue(Helper.listRestoResponse(restoArray))
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+
+                override fun onFailure(
+                    statusCode: Int, headers: Array<Header>,
+                    responseBody: ByteArray,
+                    error: Throwable
+                ) {
+                    Log.d("onFailure", error.message.toString())
+                }
+            })
+        } else {
+            ApiConfig.getSearchResto(query, object: AsyncHttpResponseHandler(){
+                override fun onSuccess(
+                    statusCode: Int,
+                    headers: Array<Header>,
+                    responseBody: ByteArray
+                ) {
+                    val result = String(responseBody)
+                    try {
+                        val responseObject = JSONObject(result)
+                        val restoArray = responseObject.getJSONArray("restaurants")
+                        _listResto.postValue(Helper.listRestoResponse(restoArray))
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+
+                override fun onFailure(
+                    statusCode: Int, headers: Array<Header>,
+                    responseBody: ByteArray,
+                    error: Throwable
+                ) {
+                    Log.d("onFailure", error.message.toString())
+                }
+            })
+        }
+    }
+
+    fun setDetailResto(id: String) {
+        ApiConfig.getDetailResto(id, object: AsyncHttpResponseHandler(){
             override fun onSuccess(
                 statusCode: Int,
                 headers: Array<Header>,
                 responseBody: ByteArray
             ) {
+                val result = String(responseBody)
                 try {
-                    val result = String(responseBody)
-                    val jsonArray = JSONArray(result)
-                    for (i in 0 until jsonArray.length()) {
-                        val jsonObject = jsonArray.getJSONObject(i)
-                        val resto = ModelResto()
-                        resto.name = jsonObject.getString("name")
-                        resto.city = jsonObject.getString("city")
-                        resto.rating = jsonObject.getString("rating")
-                        listItem.add(resto)
-                        listResto.postValue(listItem)
-                    }
+                    val responseObject = JSONObject(result)
+                    val restoObject = responseObject.getJSONObject("restaurant")
+                    _resto.postValue(Helper.detailRestoResponse(restoObject))
                 } catch (e: Exception) {
-                    log.d("Exception", e.message.toString())
+                    e.printStackTrace()
                 }
             }
 
@@ -48,69 +109,23 @@ class RestoViewModel: ViewModel() {
                 responseBody: ByteArray,
                 error: Throwable
             ) {
-                val errorMessage = when (statusCode) {
-                    401 -> "$statusCode : Bad Request"
-                    402 -> "$statusCode : Forbiden"
-                    403 -> "$statusCode : Not Found"
-                    else -> "$statusCode : ${error.message}"
-                }
-                Log.d("error", errorMessage)
+                Log.d("onFailure", error.message.toString())
             }
         })
     }
 
-    fun getRestoList(): LiveData<ArrayList<ModelResto>> {
-        return listResto
+    fun insertFavorite(favResto: ModelResto) = viewModelScope.launch(Dispatchers.IO) {
+        database.insert(favResto)
+        updateFavorite(favResto)
     }
 
-    fun setRestoDetail(id: String){
-        val detailItem = ArrayList<ModelResto>()
-        val client = AsyncHttpClient()
-        val url = "https://restaurant-api.dicoding.dev/detail/$id"
-        client.get(url, object : AsyncHttpResponseHandler(){
-            override fun onSuccess(
-                statusCode: Int,
-                headers: Array<Header>,
-                responseBody: ByteArray
-            ) {
-                try {
-                    val result = String(responseBody)
-                    val jsonArray = JSONArray(result)
-                    for (i in 0 until jsonArray.length()) {
-                        val jsonObject = jsonArray.getJSONObject(i)
-                        val resto = ModelResto()
-                        resto.name = jsonObject.getString("name")
-                        resto.pictureId = jsonObject.getString("pictureId")
-                        resto.description = jsonObject.getString("description")
-                        resto.city = jsonObject.getString("city")
-                        resto.rating = jsonObject.getString("rating")
-                        resto.address = jsonObject.getString("address")
-                        detailItem.add(resto)
-                        listResto.postValue(detailItem)
-                    }
-                } catch (e: Exception) {
-                    log.d("Exception", e.message.toString())
-                }
-            }
-
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>,
-                responseBody: ByteArray,
-                error: Throwable
-            ) {
-                val errorMessage = when (statusCode) {
-                    401 -> "$statusCode : Bad Request"
-                    402 -> "$statusCode : Forbiden"
-                    403 -> "$statusCode : Not Found"
-                    else -> "$statusCode : ${error.message}"
-                }
-                Log.d("error", errorMessage)
-            }
-        })
+    fun updateFavorite(favResto: ModelResto) = viewModelScope.launch(Dispatchers.IO) {
+        val isFavorite = database.num(favResto.id) > 0
+        _isFavorite.postValue(isFavorite)
     }
 
-    fun getRestoDetail(): LiveData<ArrayList<ModelResto>> {
-        return listResto
+    fun deleteFavorite(favResto: ModelResto) = viewModelScope.launch(Dispatchers.IO) {
+        database.drop(favResto.id)
+        updateFavorite(favResto)
     }
 }

@@ -17,4 +17,7 @@
     <string name="name">Resto Name</string>
     <string name="description">Description</string>
     <string name="todetail">toDetail</string>
+    <string name="search">search</string>
+    <string name="favorite">favorite</string>
+    <string name="rating">rating</string>
 </resources>

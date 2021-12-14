@@ -42,14 +42,5 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RestoActivity::class.java)
             startActivity(intent)
         }
-        activityMainBinding.btnHotel.setOnClickListener {
-            val intent = Intent(this, HotelActivity::class.java)
-            startActivity(intent)
-        }
-        activityMainBinding.btnWisata.setOnClickListener {
-            val intent = Intent(this, WisataActivity::class.java)
-            startActivity(intent)
-        }
     }
-
 }

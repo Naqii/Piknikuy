@@ -7,6 +7,7 @@ import com.example.piknikuy.view.fragment.TopVisitorFragment
 import com.example.piknikuy.view.fragment.TrendFragment
 
 class SectionsPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(activity) {
+
     override fun getItemCount(): Int {
         return 2
     }
@@ -19,5 +20,4 @@ class SectionsPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(
         }
         return  fragment as Fragment
     }
-
 }
