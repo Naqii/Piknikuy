@@ -1,4 +1,4 @@
-package com.example.piknikuy.view
+package com.example.piknikuy.view.resto
 
 import android.content.Intent
 import android.content.res.Configuration

@@ -1,4 +1,4 @@
-package com.example.piknikuy.view
+package com.example.piknikuy.view.resto
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity

@@ -8,6 +8,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.piknikuy.R
 import com.example.piknikuy.adapter.SectionsPagerAdapter
 import com.example.piknikuy.databinding.ActivityMainBinding
+import com.example.piknikuy.view.resto.RestoActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

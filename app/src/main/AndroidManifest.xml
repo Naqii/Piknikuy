@@ -19,13 +19,13 @@
         android:theme="@style/Theme.Piknikuy"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".view.FavoriteResto"
+            android:name=".view.resto.FavoriteResto"
             android:exported="true" />
         <activity
-            android:name=".view.DetailResto"
+            android:name=".view.resto.DetailResto"
             android:exported="true" />
         <activity
-            android:name=".view.RestoActivity"
+            android:name=".view.resto.RestoActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"
