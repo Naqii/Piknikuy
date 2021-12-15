@@ -20,4 +20,7 @@
     <string name="search">search</string>
     <string name="favorite">favorite</string>
     <string name="rating">rating</string>
+    <string name="favorite_hotel">Favorite Hotel</string>
+    <string name="favorite_resto">Favorite Restaurant</string>
+    <string name="restaurant">Restaurant</string>
 </resources>

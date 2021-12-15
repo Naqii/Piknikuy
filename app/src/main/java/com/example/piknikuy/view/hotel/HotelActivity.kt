@@ -29,9 +29,8 @@ class HotelActivity : AppCompatActivity() {
         binding = ActivityHotelBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val actionbar = supportActionBar
-        actionbar!!.title = "Hotel"
-        actionbar.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.hotel)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         hotelViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[HotelViewModel::class.java]
         if(applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -96,13 +95,7 @@ class HotelActivity : AppCompatActivity() {
     }
 
     private fun progressBarDisplay(state: Boolean) {
-        if (state) {
-            binding.progressBar.visibility = View.VISIBLE
-            binding.rvHotel.visibility = View.GONE
-        } else {
-            binding.progressBar.visibility = View.GONE
-            binding.rvHotel.visibility = View.VISIBLE
-        }
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
     }
 
     override fun onSupportNavigateUp(): Boolean {

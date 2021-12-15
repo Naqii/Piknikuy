@@ -8,6 +8,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.piknikuy.R
 import com.example.piknikuy.adapter.RestoAdapter
 import com.example.piknikuy.databinding.ActivityFavoriteRestoBinding
 import com.example.piknikuy.model.ModelResto
@@ -24,9 +25,8 @@ class FavoriteResto : AppCompatActivity() {
         binding = ActivityFavoriteRestoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val actionbar = supportActionBar
-        actionbar!!.title = "Favorite Restaurant"
-        actionbar.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.favorite_resto)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         restoViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RestoViewModel::class.java]
         if(applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -56,13 +56,7 @@ class FavoriteResto : AppCompatActivity() {
     }
 
     private fun progressBarDisplay(state: Boolean) {
-        if (state) {
-            binding.progressBar.visibility = View.VISIBLE
-            binding.rvResto.visibility = View.GONE
-        } else {
-            binding.progressBar.visibility = View.GONE
-            binding.rvResto.visibility = View.VISIBLE
-        }
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
     }
 
     override fun onSupportNavigateUp(): Boolean {

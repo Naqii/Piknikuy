@@ -31,7 +31,6 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
 
         val actionbar = supportActionBar
 
-
         hotelViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[HotelViewModel::class.java]
         val id = intent.getStringExtra(EXTRA_HOTEL) as String
 
@@ -50,6 +49,7 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
                 actionbar.setDisplayHomeAsUpEnabled(true)
                 hotel = dataHotel
                 hotelViewModel.updateFavorite(hotel)
+                showLoading(false)
             }
         })
 
@@ -72,6 +72,10 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
                 hotelViewModel.insertFavorite(hotel)
             }
         }
+    }
+
+    private fun showLoading(state: Boolean) {
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
     }
 
     override fun onSupportNavigateUp(): Boolean {

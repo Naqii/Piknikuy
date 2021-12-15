@@ -29,9 +29,8 @@ class RestoActivity : AppCompatActivity() {
         binding = ActivityRestoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val actionbar = supportActionBar
-        actionbar!!.title = "Restaurant"
-        actionbar.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.restaurant)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         restoViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RestoViewModel::class.java]
         if(applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -96,13 +95,7 @@ class RestoActivity : AppCompatActivity() {
     }
 
     private fun progressBarDisplay(state: Boolean) {
-        if (state) {
-            binding.progressBar.visibility = View.VISIBLE
-            binding.rvResto.visibility = View.GONE
-        } else {
-            binding.progressBar.visibility = View.GONE
-            binding.rvResto.visibility = View.VISIBLE
-        }
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -8,6 +8,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.piknikuy.R
 import com.example.piknikuy.adapter.HotelAdapter
 import com.example.piknikuy.databinding.ActivityFavoriteHotelBinding
 import com.example.piknikuy.model.ModelHotel
@@ -24,9 +25,8 @@ class FavoriteHotel : AppCompatActivity() {
         binding = ActivityFavoriteHotelBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val actionbar = supportActionBar
-        actionbar!!.title = "Favorite Hotel"
-        actionbar.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.favorite_hotel)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         hotelViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[HotelViewModel::class.java]
         if(applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -56,13 +56,7 @@ class FavoriteHotel : AppCompatActivity() {
     }
 
     private fun progressBarDisplay(state: Boolean) {
-        if (state) {
-            binding.progressBar.visibility = View.VISIBLE
-            binding.rvHotel.visibility = View.GONE
-        } else {
-            binding.progressBar.visibility = View.GONE
-            binding.rvHotel.visibility = View.VISIBLE
-        }
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
     }
 
     override fun onSupportNavigateUp(): Boolean {

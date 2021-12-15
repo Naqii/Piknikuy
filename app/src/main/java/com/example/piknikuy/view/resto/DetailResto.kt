@@ -33,7 +33,6 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
 
         val actionbar = supportActionBar
 
-
         restoViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RestoViewModel::class.java]
         val id = intent.getStringExtra(EXTRA_RESTO) as String
 
@@ -52,6 +51,7 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
                 actionbar.setDisplayHomeAsUpEnabled(true)
                 resto = dataResto
                 restoViewModel.updateFavorite(resto)
+                showLoading(false)
             }
         })
 
@@ -62,7 +62,6 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
                 binding.btnFav.setImageResource(R.drawable.ic_favorite_border)
             }
         })
-
         binding.btnFav.setOnClickListener(this)
     }
 
@@ -74,6 +73,10 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
                 restoViewModel.insertFavorite(resto)
             }
         }
+    }
+
+    private fun showLoading(state: Boolean) {
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
     }
 
     override fun onSupportNavigateUp(): Boolean {
