@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Piknikuy"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".setting.SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.hotel.FavoriteHotel"
             android:exported="true" />
         <activity

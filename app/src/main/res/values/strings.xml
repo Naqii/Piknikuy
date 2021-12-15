@@ -28,4 +28,7 @@
     <string name="Yes">Ya</string>
     <string name="deleted">Satu item berhasil dihapus</string>
     <string name="no">Tidak</string>
+    <string name="setting">setting</string>
+    <string name="Setting">Settings</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>

@@ -16,6 +16,8 @@ import com.example.piknikuy.R
 import com.example.piknikuy.adapter.RestoAdapter
 import com.example.piknikuy.databinding.ActivityRestoBinding
 import com.example.piknikuy.model.ModelResto
+import com.example.piknikuy.setting.SettingActivity
+import com.example.piknikuy.view.hotel.FavoriteHotel
 import com.example.piknikuy.viewModel.RestoViewModel
 
 class RestoActivity : AppCompatActivity() {
@@ -87,11 +89,19 @@ class RestoActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.favorite){
-            val myIntent = Intent(this@RestoActivity, FavoriteResto::class.java)
-            startActivity(myIntent)
+        when (item.itemId) {
+            R.id.favorite -> {
+                val f = Intent(this, FavoriteHotel::class.java)
+                startActivity(f)
+                return true
+            }
+            R.id.setting -> {
+                val s = Intent(this, SettingActivity::class.java)
+                startActivity(s)
+                return true
+            }
+            else -> return true
         }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun progressBarDisplay(state: Boolean) {
