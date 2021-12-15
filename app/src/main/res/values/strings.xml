@@ -23,4 +23,9 @@
     <string name="favorite_hotel">Favorite Hotel</string>
     <string name="favorite_resto">Favorite Restaurant</string>
     <string name="restaurant">Restaurant</string>
+    <string name="delete">Delete</string>
+    <string name="dialog_close">Apakah anda yakin ingin menghapus item ini?</string>
+    <string name="Yes">Ya</string>
+    <string name="deleted">Satu item berhasil dihapus</string>
+    <string name="no">Tidak</string>
 </resources>

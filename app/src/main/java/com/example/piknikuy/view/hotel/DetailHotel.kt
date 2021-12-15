@@ -1,9 +1,11 @@
 package com.example.piknikuy.view.hotel
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -16,12 +18,6 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDetailHotelBinding
     private lateinit var hotel: ModelHotel
     private lateinit var hotelViewModel: HotelViewModel
-
-    companion object {
-
-        const val EXTRA_HOTEL = "extra_hotel"
-
-    }
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,19 +63,51 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         if (view.id == R.id.btn_fav) {
             if (hotelViewModel.isFavorite.value == true) {
-                hotelViewModel.deleteFavorite(hotel)
+                showAlertDialog(ALERT_DIALOG_CLOSE)
             } else {
                 hotelViewModel.insertFavorite(hotel)
             }
         }
     }
 
+    private fun showAlertDialog(type: Int) {
+        val isDialogClose = type == ALERT_DIALOG_CLOSE
+        val dialogTitle = getString(R.string.delete)
+        val dialogMessage = getString(R.string.dialog_close)
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        with(alertDialogBuilder) {
+            setTitle(dialogTitle)
+            setMessage(dialogMessage)
+            setCancelable(false)
+            setPositiveButton(R.string.Yes) { _, _ ->
+                if (isDialogClose) {
+                    hotelViewModel.deleteFavorite(hotel)
+                    showToast(getString(R.string.deleted))
+                }
+                finish()
+            }
+            setNegativeButton(getString(R.string.no)) { dialog, _ -> dialog.cancel()
+            }
+        }
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+    }
+
     private fun showLoading(state: Boolean) {
         binding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    companion object {
+        const val EXTRA_HOTEL = "extra_hotel"
+        const val ALERT_DIALOG_CLOSE = 10
     }
 }

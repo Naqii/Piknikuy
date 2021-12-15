@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -18,12 +20,6 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
     private lateinit var binding: ActivityDetailRestoBinding
     private lateinit var resto: ModelResto
     private lateinit var restoViewModel: RestoViewModel
-
-    companion object {
-
-        const val EXTRA_RESTO = "extra_resto"
-
-    }
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,19 +64,51 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
     override fun onClick(view: View) {
         if (view.id == R.id.btn_fav) {
             if (restoViewModel.isFavorite.value == true) {
-                restoViewModel.deleteFavorite(resto)
+                showAlertDialog(ALERT_DIALOG_CLOSE)
             } else {
                 restoViewModel.insertFavorite(resto)
             }
         }
     }
 
+    private fun showAlertDialog(type: Int) {
+        val isDialogClose = type == ALERT_DIALOG_CLOSE
+        val dialogTitle = getString(R.string.delete)
+        val dialogMessage = getString(R.string.dialog_close)
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        with(alertDialogBuilder) {
+            setTitle(dialogTitle)
+            setMessage(dialogMessage)
+            setCancelable(false)
+            setPositiveButton(R.string.Yes) {_, _ ->
+                if (isDialogClose) {
+                    restoViewModel.deleteFavorite(resto)
+                    showToast(getString(R.string.deleted))
+                }
+                finish()
+            }
+            setNegativeButton(getString(R.string.no)) {dialog, _ -> dialog.cancel()
+            }
+        }
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+    }
+
     private fun showLoading(state: Boolean) {
         binding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    companion object {
+        const val EXTRA_RESTO = "extra_resto"
+        const val ALERT_DIALOG_CLOSE = 10
     }
 }
