@@ -17,7 +17,6 @@ import com.example.piknikuy.adapter.RestoAdapter
 import com.example.piknikuy.databinding.ActivityRestoBinding
 import com.example.piknikuy.model.ModelResto
 import com.example.piknikuy.setting.SettingActivity
-import com.example.piknikuy.view.hotel.FavoriteHotel
 import com.example.piknikuy.viewModel.RestoViewModel
 
 class RestoActivity : AppCompatActivity() {
@@ -89,18 +88,18 @@ class RestoActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.favorite -> {
-                val f = Intent(this, FavoriteHotel::class.java)
+                val f = Intent(this, FavoriteResto::class.java)
                 startActivity(f)
-                return true
+                true
             }
             R.id.setting -> {
                 val s = Intent(this, SettingActivity::class.java)
                 startActivity(s)
-                return true
+                true
             }
-            else -> return true
+            else -> true
         }
     }
 
