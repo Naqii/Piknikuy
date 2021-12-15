@@ -12,28 +12,6 @@ import com.example.piknikuy.model.ModelHotel
 
 class HotelProvider : ContentProvider() {
 
-    companion object {
-        private lateinit var favoriteHotel: HotelDao
-
-        private const val SCHEME = "content"
-        private const val TABLE_NAME = ModelHotel.TABLE_NAME
-        private const val AUTH= "com.example.piknikuy"
-        private val uriMatch = UriMatcher(UriMatcher.NO_MATCH)
-        private const val FAVORITE = 1
-        private const val FAVORITE_ID = 2
-
-        init {
-            uriMatch.addURI(AUTH, TABLE_NAME, FAVORITE)
-            uriMatch.addURI(AUTH, "$TABLE_NAME/#", FAVORITE_ID)
-        }
-
-        val CONTENT_URI: Uri = Uri.Builder()
-            .scheme(SCHEME)
-            .authority(AUTH)
-            .appendPath(TABLE_NAME)
-            .build()
-    }
-
     override fun onCreate(): Boolean {
         favoriteHotel = PiknikuyDatabase.getDatabase(context as Context).hotelDao()
         return true
@@ -81,5 +59,27 @@ class HotelProvider : ContentProvider() {
         favoriteHotel.drop(uri.lastPathSegment.toString())
         context?.contentResolver?.notifyChange(CONTENT_URI, null)
         return 0
+    }
+
+    companion object {
+        private lateinit var favoriteHotel: HotelDao
+
+        private const val SCHEME = "content"
+        private const val TABLE_NAME = ModelHotel.TABLE_NAME
+        private const val AUTH= "com.example.piknikuy"
+        private val uriMatch = UriMatcher(UriMatcher.NO_MATCH)
+        private const val FAVORITE = 1
+        private const val FAVORITE_ID = 2
+
+        init {
+            uriMatch.addURI(AUTH, TABLE_NAME, FAVORITE)
+            uriMatch.addURI(AUTH, "$TABLE_NAME/#", FAVORITE_ID)
+        }
+
+        val CONTENT_URI: Uri = Uri.Builder()
+            .scheme(SCHEME)
+            .authority(AUTH)
+            .appendPath(TABLE_NAME)
+            .build()
     }
 }

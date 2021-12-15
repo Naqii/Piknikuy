@@ -12,28 +12,6 @@ import com.example.piknikuy.model.ModelResto
 
 class RestoProvider : ContentProvider() {
 
-    companion object {
-        private lateinit var favoriteResto: RestoDao
-
-        private const val SCHEME = "content"
-        private const val TABLE_NAME = ModelResto.TABLE_NAME
-        private const val AUTH= "com.example.piknikuy"
-        private val uriMatch = UriMatcher(UriMatcher.NO_MATCH)
-        private const val FAVORITE = 1
-        private const val FAVORITE_ID = 2
-
-        init {
-            uriMatch.addURI(AUTH, TABLE_NAME, FAVORITE)
-            uriMatch.addURI(AUTH, "$TABLE_NAME/#", FAVORITE_ID)
-        }
-
-        val CONTENT_URI: Uri = Uri.Builder()
-            .scheme(SCHEME)
-            .authority(AUTH)
-            .appendPath(TABLE_NAME)
-            .build()
-    }
-
     override fun onCreate(): Boolean {
         favoriteResto = PiknikuyDatabase.getDatabase(context as Context).restoDao()
         return true
@@ -81,5 +59,27 @@ class RestoProvider : ContentProvider() {
         favoriteResto.drop(uri.lastPathSegment.toString())
         context?.contentResolver?.notifyChange(CONTENT_URI, null)
         return 0
+    }
+
+    companion object {
+        private lateinit var favoriteResto: RestoDao
+
+        private const val SCHEME = "content"
+        private const val TABLE_NAME = ModelResto.TABLE_NAME
+        private const val AUTH= "com.example.piknikuy"
+        private val uriMatch = UriMatcher(UriMatcher.NO_MATCH)
+        private const val FAVORITE = 1
+        private const val FAVORITE_ID = 2
+
+        init {
+            uriMatch.addURI(AUTH, TABLE_NAME, FAVORITE)
+            uriMatch.addURI(AUTH, "$TABLE_NAME/#", FAVORITE_ID)
+        }
+
+        val CONTENT_URI: Uri = Uri.Builder()
+            .scheme(SCHEME)
+            .authority(AUTH)
+            .appendPath(TABLE_NAME)
+            .build()
     }
 }
