@@ -9,7 +9,6 @@ import com.example.piknikuy.api.ApiConfig
 import com.example.piknikuy.database.PiknikuyDatabase
 import com.example.piknikuy.helper.Helper
 import com.example.piknikuy.model.ModelHotel
-import com.example.piknikuy.model.ModelResto
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
 import kotlinx.coroutines.Dispatchers

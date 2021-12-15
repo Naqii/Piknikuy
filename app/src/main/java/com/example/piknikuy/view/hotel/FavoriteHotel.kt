@@ -8,16 +8,10 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.piknikuy.R
 import com.example.piknikuy.adapter.HotelAdapter
-import com.example.piknikuy.adapter.RestoAdapter
 import com.example.piknikuy.databinding.ActivityFavoriteHotelBinding
-import com.example.piknikuy.databinding.ActivityFavoriteRestoBinding
 import com.example.piknikuy.model.ModelHotel
-import com.example.piknikuy.model.ModelResto
-import com.example.piknikuy.view.resto.DetailResto
 import com.example.piknikuy.viewModel.HotelViewModel
-import com.example.piknikuy.viewModel.RestoViewModel
 
 class FavoriteHotel : AppCompatActivity() {
 

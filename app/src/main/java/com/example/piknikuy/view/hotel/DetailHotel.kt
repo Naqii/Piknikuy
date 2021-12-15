@@ -8,13 +8,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.piknikuy.R
-import com.example.piknikuy.api.ApiConfig
 import com.example.piknikuy.databinding.ActivityDetailHotelBinding
-import com.example.piknikuy.databinding.ActivityDetailRestoBinding
 import com.example.piknikuy.model.ModelHotel
-import com.example.piknikuy.model.ModelResto
 import com.example.piknikuy.viewModel.HotelViewModel
-import com.example.piknikuy.viewModel.RestoViewModel
 
 class DetailHotel : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDetailHotelBinding

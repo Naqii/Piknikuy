@@ -11,7 +11,6 @@ import com.example.piknikuy.R
 import com.example.piknikuy.api.ApiConfig
 import com.example.piknikuy.databinding.ActivityDetailRestoBinding
 import com.example.piknikuy.model.ModelResto
-import com.example.piknikuy.view.hotel.DetailHotel.Companion.EXTRA_HOTEL
 import com.example.piknikuy.viewModel.RestoViewModel
 
 class DetailResto : AppCompatActivity(), View.OnClickListener{

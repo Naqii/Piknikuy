@@ -8,9 +8,7 @@ import android.database.Cursor
 import android.net.Uri
 import com.example.piknikuy.database.HotelDao
 import com.example.piknikuy.database.PiknikuyDatabase
-import com.example.piknikuy.database.RestoDao
 import com.example.piknikuy.model.ModelHotel
-import com.example.piknikuy.model.ModelResto
 
 class HotelProvider : ContentProvider() {
 

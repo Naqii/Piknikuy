@@ -14,15 +14,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.piknikuy.R
 import com.example.piknikuy.adapter.HotelAdapter
-import com.example.piknikuy.adapter.RestoAdapter
 import com.example.piknikuy.databinding.ActivityHotelBinding
-import com.example.piknikuy.databinding.ActivityRestoBinding
 import com.example.piknikuy.model.ModelHotel
-import com.example.piknikuy.model.ModelResto
-import com.example.piknikuy.view.resto.DetailResto
-import com.example.piknikuy.view.resto.FavoriteResto
 import com.example.piknikuy.viewModel.HotelViewModel
-import com.example.piknikuy.viewModel.RestoViewModel
 
 class HotelActivity : AppCompatActivity() {
 
