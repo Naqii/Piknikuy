@@ -5,12 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.piknikuy.App
+import com.example.piknikuy.model.ModelHotel
 import com.example.piknikuy.model.ModelResto
 
-@Database(entities = [ModelResto::class], version = 1, exportSchema = false)
+@Database(entities = [ModelResto::class, ModelHotel::class], version = 1, exportSchema = false)
 abstract class PiknikuyDatabase : RoomDatabase() {
 
     abstract fun restoDao(): RestoDao
+    abstract fun hotelDao(): HotelDao
 
     companion object {
 

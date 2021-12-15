@@ -1,5 +1,6 @@
 package com.example.piknikuy.helper
 
+import com.example.piknikuy.model.ModelHotel
 import com.example.piknikuy.model.ModelResto
 import org.json.JSONArray
 import org.json.JSONObject
@@ -7,7 +8,7 @@ import org.json.JSONObject
 class Helper {
 
     companion object {
-
+        //for restaurant
         fun listRestoResponse(items: JSONArray): ArrayList<ModelResto> {
             val listResto = ArrayList<ModelResto>()
             for (i in 0 until items.length()) {
@@ -32,6 +33,32 @@ class Helper {
             dataResto.rating = item.getString("rating")
             dataResto.address = item.getString("address")
             return dataResto
+        }
+
+        //for hotel
+        fun listHotelResponse(items: JSONArray): ArrayList<ModelHotel> {
+            val listHotel = ArrayList<ModelHotel>()
+            for (i in 0 until items.length()) {
+                val item = items.getJSONObject(i)
+                val dataHotel = ModelHotel()
+                dataHotel.id = item.getString("id")
+                dataHotel.name = item.getString("name")
+                dataHotel.city = item.getString("city")
+                dataHotel.picture = item.getString("picture")
+                listHotel.add(dataHotel)
+            }
+            return listHotel
+        }
+
+        fun detailHotelResponse(item: JSONObject): ModelHotel {
+            val dataHotel = ModelHotel()
+            dataHotel.id = item.getString("id")
+            dataHotel.picture = item.getString("picture")
+            dataHotel.name = item.getString("name")
+            dataHotel.city = item.getString("city")
+            dataHotel.description = item.getString("description")
+            dataHotel.rating = item.getString("rating")
+            return dataHotel
         }
     }
 }

@@ -25,7 +25,7 @@ class FavoriteResto : AppCompatActivity() {
         setContentView(binding.root)
 
         val actionbar = supportActionBar
-        actionbar!!.title = "Favorite Resto"
+        actionbar!!.title = "Favorite Restaurant"
         actionbar.setDisplayHomeAsUpEnabled(true)
 
         restoViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RestoViewModel::class.java]
@@ -47,9 +47,9 @@ class FavoriteResto : AppCompatActivity() {
 
         restoViewModel.setSearchResto()
         progressBarDisplay(true)
-        restoViewModel.favorite.observe(this, { userItem->
-            if (userItem != null) {
-                favoriteAdapter.listResto = ArrayList(userItem)
+        restoViewModel.favorite.observe(this, { restoItem->
+            if (restoItem != null) {
+                favoriteAdapter.listResto = ArrayList(restoItem)
                 progressBarDisplay(false)
             }
         })

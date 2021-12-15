@@ -5,21 +5,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.piknikuy.api.ApiConfig
 import com.example.piknikuy.databinding.ItemListBinding
-import com.example.piknikuy.model.ModelResto
+import com.example.piknikuy.model.ModelHotel
 
-class RestoAdapter : RecyclerView.Adapter<RestoAdapter.ListViewHolder>() {
+class HotelAdapter : RecyclerView.Adapter<HotelAdapter.ListViewHolder>() {
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
-    var listResto = arrayListOf<ModelResto>()
-    @SuppressLint("NotifyDataSetChanged")
-    set(value) {
-        listResto.clear()
-        listResto.addAll(value)
-        notifyDataSetChanged()
-    }
+    var listHotel = arrayListOf<ModelHotel>()
+        @SuppressLint("NotifyDataSetChanged")
+        set(value) {
+            listHotel.clear()
+            listHotel.addAll(value)
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
         val binding = ItemListBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
@@ -27,23 +26,23 @@ class RestoAdapter : RecyclerView.Adapter<RestoAdapter.ListViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(listResto[position])
+        holder.bind(listHotel[position])
     }
 
-    override fun getItemCount(): Int = listResto.size
+    override fun getItemCount(): Int = listHotel.size
 
     inner class ListViewHolder(private val binding: ItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(dataResto: ModelResto) {
+        fun bind(dataHotel: ModelHotel) {
             with(binding) {
                 Glide.with(itemView.context)
-                    .load(ApiConfig.BASE_IMG_URL_RESTO + dataResto.pictureId)
+                    .load(dataHotel.picture)
                     .circleCrop()
                     .into(avatarFav)
-                tvName.text = dataResto.name
-                tvCity.text = dataResto.city
+                tvName.text = dataHotel.name
+                tvCity.text = dataHotel.city
 
-                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(dataResto) }
+                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(dataHotel) }
             }
         }
     }
@@ -53,6 +52,6 @@ class RestoAdapter : RecyclerView.Adapter<RestoAdapter.ListViewHolder>() {
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: ModelResto)
+        fun onItemClicked(data: ModelHotel)
     }
 }
