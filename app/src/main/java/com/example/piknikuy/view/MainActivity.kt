@@ -3,7 +3,6 @@ package com.example.piknikuy.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -15,9 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.piknikuy.R
 import com.example.piknikuy.adapter.SectionsPagerAdapter
 import com.example.piknikuy.databinding.ActivityMainBinding
-import com.example.piknikuy.setting.SettingActivity
 import com.example.piknikuy.setting.SettingPreferences
-import com.example.piknikuy.view.hotel.FavoriteHotel
 import com.example.piknikuy.view.hotel.HotelActivity
 import com.example.piknikuy.view.resto.RestoActivity
 import com.example.piknikuy.viewModel.SettingsViewModel
@@ -42,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
 
         supportActionBar?.title = getString(R.string.piknikuy)
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         btnMenu()
         darkMode()
@@ -63,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             SettingsViewModel::class.java
         )
         settingViewModel.getThemeSettings().observe(
-            this, { isDarkModeActive: Boolean ->
+            this, { isDarkModeActive ->
                 if (isDarkModeActive) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                     return@observe
@@ -83,22 +79,6 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.btnHotel.setOnClickListener {
             val intent = Intent(this, HotelActivity::class.java)
             startActivity(intent)
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.favorite -> {
-                val f = Intent(this, FavoriteHotel::class.java)
-                startActivity(f)
-                return true
-            }
-            R.id.setting -> {
-                val s = Intent(this, SettingActivity::class.java)
-                startActivity(s)
-                return true
-            }
-            else -> return true
         }
     }
 }
