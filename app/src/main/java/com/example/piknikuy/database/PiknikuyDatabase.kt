@@ -13,6 +13,7 @@ abstract class PiknikuyDatabase : RoomDatabase() {
 
     abstract fun restoDao(): RestoDao
     abstract fun hotelDao(): HotelDao
+    abstract fun wisataDao(): WisataDao
 
     companion object {
 

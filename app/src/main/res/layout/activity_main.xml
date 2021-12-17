@@ -43,7 +43,6 @@
         android:id="@+id/btn_hotel"
         android:layout_width="75dp"
         android:layout_height="66dp"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
         android:backgroundTint="@color/white"
@@ -51,7 +50,6 @@
         app:iconSize="45dp"
         app:iconTint="@color/biru_tua"
         app:layout_constraintEnd_toStartOf="@+id/btn_resto"
-        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -75,13 +73,12 @@
         android:layout_height="66dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
         android:backgroundTint="@color/white"
         android:textColor="#00796B"
         app:icon="@drawable/ic_wisata"
         app:iconSize="45dp"
         app:iconTint="@color/biru_tua"
-        app:layout_constraintEnd_toStartOf="@+id/btn_maps"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_resto"
         app:layout_constraintTop_toBottomOf="@+id/search"
         tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
@@ -111,35 +108,6 @@
         app:layout_constraintHorizontal_bias="0.708"
         app:layout_constraintStart_toStartOf="@+id/btn_resto"
         app:layout_constraintTop_toBottomOf="@+id/btn_resto" />
-
-    <Button
-        android:id="@+id/btn_maps"
-        android:layout_width="75dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="30dp"
-        android:backgroundTint="@color/white"
-        app:icon="@drawable/ic_map"
-        app:iconSize="45dp"
-        app:iconTint="@color/biru_tua"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_wisata"
-        app:layout_constraintTop_toBottomOf="@+id/search"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/tv_travel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/maps"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/btn_maps"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="@+id/btn_maps"
-        app:layout_constraintTop_toBottomOf="@+id/btn_maps" />
 
     <Button
         android:id="@+id/btn_resto"

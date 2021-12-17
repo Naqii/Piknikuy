@@ -41,5 +41,8 @@ class ApiConfig {
             val url = "$BASE_URL_HOTEL/detail/$id"
             return client.get(url, responseHandler)
         }
+
+        //for wisata
+
     }
 }

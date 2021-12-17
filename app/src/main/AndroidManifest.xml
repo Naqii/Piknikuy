@@ -19,6 +19,17 @@
         android:theme="@style/Theme.Piknikuy"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".view.wisata.FavoriteWisata"
+            android:exported="false" />
+        <activity
+            android:name=".view.wisata.WisataActivity"
+            android:exported="false"
+            android:label="@string/title_activity_wisata"
+            android:theme="@style/Theme.Piknikuy.NoActionBar" />
+        <activity
+            android:name=".view.wisata.DetailWisata"
+            android:exported="false" />
+        <activity
             android:name=".setting.SettingActivity"
             android:exported="false" />
         <activity
