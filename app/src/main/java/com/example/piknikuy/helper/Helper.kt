@@ -2,6 +2,7 @@ package com.example.piknikuy.helper
 
 import com.example.piknikuy.model.ModelHotel
 import com.example.piknikuy.model.ModelResto
+import com.example.piknikuy.model.ModelWisata
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -59,6 +60,33 @@ class Helper {
             dataHotel.description = item.getString("description")
             dataHotel.rating = item.getString("rating")
             return dataHotel
+        }
+
+        //for wisata diganti setelah API wisatanya ada
+        fun listWisataResponse(items: JSONArray): ArrayList<ModelWisata> {
+            val listWisata = ArrayList<ModelWisata>()
+            for (i in 0 until items.length()) {
+                val item = items.getJSONObject(i)
+                val dataWisata = ModelWisata()
+                dataWisata.id = item.getString("id")
+                dataWisata.name = item.getString("name")
+                dataWisata.city = item.getString("city")
+                dataWisata.pictureId = item.getString("pictureId")
+                listWisata.add(dataWisata)
+            }
+            return listWisata
+        }
+
+        fun detailWisataResponse(item: JSONObject): ModelWisata {
+            val dataWisata = ModelWisata()
+            dataWisata.id = item.getString("id")
+            dataWisata.pictureId = item.getString("pictureId")
+            dataWisata.name = item.getString("name")
+            dataWisata.city = item.getString("city")
+            dataWisata.description = item.getString("description")
+            dataWisata.rating = item.getString("rating")
+            dataWisata.address = item.getString("address")
+            return dataWisata
         }
     }
 }

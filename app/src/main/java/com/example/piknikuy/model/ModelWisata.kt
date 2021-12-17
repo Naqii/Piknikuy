@@ -36,6 +36,6 @@ data class ModelWisata (
     var uid: Int? = null
 ) : Parcelable {
     companion object {
-        const val TABLE_NAME = "favorite_resto"
+        const val TABLE_NAME = "favorite_wisata"
     }
 }
