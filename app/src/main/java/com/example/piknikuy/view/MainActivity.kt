@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
     private fun darkMode() {
         val pref = SettingPreferences.getInstance(dataStore)
         val settingViewModel = ViewModelProvider(this, ViewModelFactory(pref))[SettingsViewModel::class.java]
+        //perkiraan bugnya disini yg darkmode
         settingViewModel.getThemeSettings().observe(
             this, { isDarkModeActive ->
                 if (isDarkModeActive) {
