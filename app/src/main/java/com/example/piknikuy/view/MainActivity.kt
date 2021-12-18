@@ -17,6 +17,7 @@ import com.example.piknikuy.databinding.ActivityMainBinding
 import com.example.piknikuy.setting.SettingPreferences
 import com.example.piknikuy.view.hotel.HotelActivity
 import com.example.piknikuy.view.resto.RestoActivity
+import com.example.piknikuy.view.wisata.WisataActivity
 import com.example.piknikuy.viewModel.SettingsViewModel
 import com.example.piknikuy.viewModel.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
@@ -78,6 +79,10 @@ class MainActivity : AppCompatActivity() {
         }
         activityMainBinding.btnHotel.setOnClickListener {
             val intent = Intent(this, HotelActivity::class.java)
+            startActivity(intent)
+        }
+        activityMainBinding.btnWisata.setOnClickListener {
+            val intent = Intent(this, WisataActivity::class.java)
             startActivity(intent)
         }
     }

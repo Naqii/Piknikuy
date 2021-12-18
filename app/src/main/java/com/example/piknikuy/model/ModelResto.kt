@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 import com.example.piknikuy.model.ModelResto.Companion.TABLE_NAME
 import kotlinx.parcelize.Parcelize
 
-
 @Parcelize
 @Entity(tableName = TABLE_NAME)
 data class ModelResto (

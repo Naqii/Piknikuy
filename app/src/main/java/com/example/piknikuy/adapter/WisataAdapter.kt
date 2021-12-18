@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.piknikuy.api.ApiConfig
 import com.example.piknikuy.databinding.ItemListBinding
-import com.example.piknikuy.model.ModelResto
+import com.example.piknikuy.model.ModelWisata
 
 class WisataAdapter : RecyclerView.Adapter<WisataAdapter.ListViewHolder>() {
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
-    var listWisata = arrayListOf<ModelResto>()
+    var listWisata = arrayListOf<ModelWisata>()
     @SuppressLint("NotifyDataSetChanged")
     set(value) {
         listWisata.clear()
@@ -34,16 +34,16 @@ class WisataAdapter : RecyclerView.Adapter<WisataAdapter.ListViewHolder>() {
 
     inner class ListViewHolder(private val binding: ItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(dataResto: ModelResto) {
+        fun bind(dataWisata: ModelWisata) {
             with(binding) {
                 Glide.with(itemView.context)
-                    .load(ApiConfig.BASE_IMG_URL_RESTO + dataResto.pictureId)
+                    .load(ApiConfig.BASE_IMG_URL_RESTO + dataWisata.pictureId)
                     .circleCrop()
                     .into(avatarFav)
-                tvName.text = dataResto.name
-                tvCity.text = dataResto.city
+                tvName.text = dataWisata.name
+                tvCity.text = dataWisata.city
 
-                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(dataResto) }
+                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(dataWisata) }
             }
         }
     }
@@ -53,6 +53,6 @@ class WisataAdapter : RecyclerView.Adapter<WisataAdapter.ListViewHolder>() {
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: ModelResto)
+        fun onItemClicked(data: ModelWisata)
     }
 }

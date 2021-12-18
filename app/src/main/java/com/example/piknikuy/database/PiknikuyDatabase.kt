@@ -7,8 +7,9 @@ import androidx.room.RoomDatabase
 import com.example.piknikuy.App
 import com.example.piknikuy.model.ModelHotel
 import com.example.piknikuy.model.ModelResto
+import com.example.piknikuy.model.ModelWisata
 
-@Database(entities = [ModelResto::class, ModelHotel::class], version = 1, exportSchema = false)
+@Database(entities = [ModelResto::class, ModelHotel::class, ModelWisata::class], version = 1, exportSchema = false)
 abstract class PiknikuyDatabase : RoomDatabase() {
 
     abstract fun restoDao(): RestoDao

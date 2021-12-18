@@ -14,6 +14,7 @@ import cz.msebera.android.httpclient.Header
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import java.lang.Exception
 
 class WisataViewModel: ViewModel() {
 
@@ -43,7 +44,8 @@ class WisataViewModel: ViewModel() {
                     val result = String(responseBody)
                     try {
                         val responseObject = JSONObject(result)
-                        val wisataArray = responseObject.getJSONArray("wisata")
+                        //diganti jika sudah ada APInya
+                        val wisataArray = responseObject.getJSONArray("restaurants")
                         _listWisata.postValue(Helper.listWisataResponse(wisataArray))
                     } catch (e: Exception) {
                         e.printStackTrace()
@@ -59,6 +61,7 @@ class WisataViewModel: ViewModel() {
                 }
             })
         } else {
+            //diganti jika API Wisata sudah ada
             ApiConfig.getSearchResto(query, object: AsyncHttpResponseHandler(){
                 override fun onSuccess(
                     statusCode: Int,
@@ -68,7 +71,8 @@ class WisataViewModel: ViewModel() {
                     val result = String(responseBody)
                     try {
                         val responseObject = JSONObject(result)
-                        val wisataArray = responseObject.getJSONArray("wisata")
+                        //diganti jika sudah ada APInya
+                        val wisataArray = responseObject.getJSONArray("restaurants")
                         _listWisata.postValue(Helper.listWisataResponse(wisataArray))
                     } catch (e: Exception) {
                         e.printStackTrace()
@@ -87,6 +91,7 @@ class WisataViewModel: ViewModel() {
     }
 
     fun setDetailWisata(id: String) {
+        //diganti jika API Wisata sudah ada
         ApiConfig.getDetailResto(id, object: AsyncHttpResponseHandler(){
             override fun onSuccess(
                 statusCode: Int,
@@ -96,7 +101,8 @@ class WisataViewModel: ViewModel() {
                 val result = String(responseBody)
                 try {
                     val responseObject = JSONObject(result)
-                    val wisataObject = responseObject.getJSONObject("wisata")
+                    //diganti jika sudah ada APInya
+                    val wisataObject = responseObject.getJSONObject("restaurants")
                     _wisata.postValue(Helper.detailWisataResponse(wisataObject))
                 } catch (e: Exception) {
                     e.printStackTrace()

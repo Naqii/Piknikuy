@@ -11,6 +11,7 @@ import com.example.piknikuy.database.WisataDao
 import com.example.piknikuy.model.ModelResto
 
 class WisataProvider: ContentProvider() {
+
     override fun onCreate(): Boolean {
         favoriteWisata = PiknikuyDatabase.getDatabase(context as Context).wisataDao()
         return true
