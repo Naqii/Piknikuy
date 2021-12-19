@@ -31,7 +31,6 @@ class RestoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.title = getString(R.string.restaurant)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         restoViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RestoViewModel::class.java]
         if(applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -105,10 +104,5 @@ class RestoActivity : AppCompatActivity() {
 
     private fun progressBarDisplay(state: Boolean) {
         binding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 }

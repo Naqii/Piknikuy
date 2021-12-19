@@ -31,7 +31,6 @@ class WisataActivity : AppCompatActivity() {
         setContentView(wisataActivityBinding.root)
 
         supportActionBar?.title = getString(R.string.wisata)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         wisataViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[WisataViewModel::class.java]
         if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -105,10 +104,5 @@ class WisataActivity : AppCompatActivity() {
 
     private fun progressBarDisplay(state: Boolean) {
         wisataActivityBinding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 }

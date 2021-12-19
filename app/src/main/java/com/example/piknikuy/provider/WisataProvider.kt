@@ -8,7 +8,7 @@ import android.database.Cursor
 import android.net.Uri
 import com.example.piknikuy.database.PiknikuyDatabase
 import com.example.piknikuy.database.WisataDao
-import com.example.piknikuy.model.ModelResto
+import com.example.piknikuy.model.ModelWisata
 
 class WisataProvider: ContentProvider() {
 
@@ -53,7 +53,7 @@ class WisataProvider: ContentProvider() {
         private lateinit var favoriteWisata: WisataDao
 
         private const val SCHEME = "content"
-        private const val TABLE_NAME = ModelResto.TABLE_NAME
+        private const val TABLE_NAME = ModelWisata.TABLE_NAME
         private const val AUTH= "com.example.piknikuy"
         private val uriMatch = UriMatcher(UriMatcher.NO_MATCH)
         private const val FAVORITE = 1

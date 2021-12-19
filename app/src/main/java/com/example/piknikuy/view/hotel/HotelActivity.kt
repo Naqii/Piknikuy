@@ -31,7 +31,6 @@ class HotelActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.title = getString(R.string.hotel)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         hotelViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[HotelViewModel::class.java]
         if(applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -105,10 +104,5 @@ class HotelActivity : AppCompatActivity() {
 
     private fun progressBarDisplay(state: Boolean) {
         binding.progressBar.visibility = if (state) View.VISIBLE else View.INVISIBLE
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 }

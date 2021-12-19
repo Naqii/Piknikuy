@@ -13,7 +13,6 @@ import com.example.piknikuy.R
 import com.example.piknikuy.api.ApiConfig
 import com.example.piknikuy.databinding.ActivityDetailWisataBinding
 import com.example.piknikuy.model.ModelWisata
-import com.example.piknikuy.view.resto.DetailResto
 import com.example.piknikuy.viewModel.WisataViewModel
 
 class DetailWisata : AppCompatActivity(), View.OnClickListener {
@@ -37,7 +36,7 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
         wisataViewModel.wisata.observe(this, {dataWisata ->
             if (dataWisata != null) {
                 Glide.with(this)
-                    .load(ApiConfig.BASE_IMG_URL_RESTO + dataWisata.city)
+                    .load(ApiConfig.BASE_IMG_URL_RESTO + dataWisata.pictureId)
                     .apply(RequestOptions())
                     .into(detailWisataBinding.tvPicture)
                 detailWisataBinding.tvNamaWisata.text = dataWisata.name
@@ -65,7 +64,7 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         if (view.id == R.id.btn_fav) {
             if (wisataViewModel.isFavorite.value == true) {
-                showAlertDialog(DetailResto.ALERT_DIALOG_CLOSE)
+                showAlertDialog(ALERT_DIALOG_CLOSE)
             } else {
                 wisataViewModel.insertFavorite(wisata)
             }
@@ -106,5 +105,9 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
     companion object {
         const val EXTRA_WISATA = "extra_wisata"
         const val ALERT_DIALOG_CLOSE = 30
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

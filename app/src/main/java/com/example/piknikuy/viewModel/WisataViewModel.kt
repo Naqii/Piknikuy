@@ -102,7 +102,7 @@ class WisataViewModel: ViewModel() {
                 try {
                     val responseObject = JSONObject(result)
                     //diganti jika sudah ada APInya
-                    val wisataObject = responseObject.getJSONObject("restaurants")
+                    val wisataObject = responseObject.getJSONObject("restaurant")
                     _wisata.postValue(Helper.detailWisataResponse(wisataObject))
                 } catch (e: Exception) {
                     e.printStackTrace()
