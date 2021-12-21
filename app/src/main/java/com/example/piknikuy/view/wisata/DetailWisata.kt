@@ -1,7 +1,10 @@
 package com.example.piknikuy.view.wisata
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -10,9 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.piknikuy.R
-import com.example.piknikuy.api.ApiConfig
 import com.example.piknikuy.databinding.ActivityDetailWisataBinding
 import com.example.piknikuy.model.ModelWisata
+import com.example.piknikuy.setting.SettingActivity
 import com.example.piknikuy.viewModel.WisataViewModel
 
 class DetailWisata : AppCompatActivity(), View.OnClickListener {
@@ -36,7 +39,7 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
         wisataViewModel.wisata.observe(this, {dataWisata ->
             if (dataWisata != null) {
                 Glide.with(this)
-                    .load(ApiConfig.BASE_IMG_URL_RESTO + dataWisata.pictureId)
+                    .load(dataWisata.picture)
                     .apply(RequestOptions())
                     .into(detailWisataBinding.tvPicture)
                 detailWisataBinding.tvNamaWisata.text = dataWisata.name
@@ -109,5 +112,25 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.favorite -> {
+                val f = Intent(this, FavoriteWisata::class.java)
+                startActivity(f)
+                true
+            }
+            R.id.setting -> {
+                val s = Intent(this, SettingActivity::class.java)
+                startActivity(s)
+                true
+            }
+            else -> true
+        }
     }
 }

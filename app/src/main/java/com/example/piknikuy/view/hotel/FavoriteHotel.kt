@@ -45,7 +45,7 @@ class FavoriteHotel : AppCompatActivity() {
             }
         })
 
-        hotelViewModel.setSearchHotel()
+        hotelViewModel.setListHotel()
         progressBarDisplay(true)
         hotelViewModel.favorite.observe(this, { hotelItem->
             if (hotelItem != null) {

@@ -32,10 +32,8 @@ class WisataViewModel: ViewModel() {
     private var _favorite = database.select()
     val favorite : LiveData<List<ModelWisata>> = _favorite
 
-    fun setSearchWisata(query: String? = null) {
-        if (query == null){
-            //jika sudah ada API Wisata bisa diganti untuk sementara pakai API Resto
-            ApiConfig.getListResto( object: AsyncHttpResponseHandler(){
+    fun setListWisata() {
+        ApiConfig.getListWisata( object: AsyncHttpResponseHandler(){
                 override fun onSuccess(
                     statusCode: Int,
                     headers: Array<Header>,
@@ -44,35 +42,7 @@ class WisataViewModel: ViewModel() {
                     val result = String(responseBody)
                     try {
                         val responseObject = JSONObject(result)
-                        //diganti jika sudah ada APInya
-                        val wisataArray = responseObject.getJSONArray("restaurants")
-                        _listWisata.postValue(Helper.listWisataResponse(wisataArray))
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
-
-                override fun onFailure(
-                    statusCode: Int, headers: Array<Header>,
-                    responseBody: ByteArray,
-                    error: Throwable
-                ) {
-                    Log.d("onFailure", error.message.toString())
-                }
-            })
-        } else {
-            //diganti jika API Wisata sudah ada
-            ApiConfig.getSearchResto(query, object: AsyncHttpResponseHandler(){
-                override fun onSuccess(
-                    statusCode: Int,
-                    headers: Array<Header>,
-                    responseBody: ByteArray
-                ) {
-                    val result = String(responseBody)
-                    try {
-                        val responseObject = JSONObject(result)
-                        //diganti jika sudah ada APInya
-                        val wisataArray = responseObject.getJSONArray("restaurants")
+                        val wisataArray = responseObject.getJSONArray("destination")
                         _listWisata.postValue(Helper.listWisataResponse(wisataArray))
                     } catch (e: Exception) {
                         e.printStackTrace()
@@ -88,11 +58,9 @@ class WisataViewModel: ViewModel() {
                 }
             })
         }
-    }
 
     fun setDetailWisata(id: String) {
-        //diganti jika API Wisata sudah ada
-        ApiConfig.getDetailResto(id, object: AsyncHttpResponseHandler(){
+        ApiConfig.getDetailWisata(id, object: AsyncHttpResponseHandler(){
             override fun onSuccess(
                 statusCode: Int,
                 headers: Array<Header>,
@@ -101,8 +69,7 @@ class WisataViewModel: ViewModel() {
                 val result = String(responseBody)
                 try {
                     val responseObject = JSONObject(result)
-                    //diganti jika sudah ada APInya
-                    val wisataObject = responseObject.getJSONObject("restaurant")
+                    val wisataObject = responseObject.getJSONObject("destination")
                     _wisata.postValue(Helper.detailWisataResponse(wisataObject))
                 } catch (e: Exception) {
                     e.printStackTrace()

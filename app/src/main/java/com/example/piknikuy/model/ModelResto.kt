@@ -17,20 +17,18 @@ data class ModelResto (
     @ColumnInfo(name = "name")
     var name: String = "",
 
-    @ColumnInfo(name = "description")
-    var description: String = "",
+    @ColumnInfo(name = "overview")
+    var overview: String = "",
 
-    @ColumnInfo(name = "pictureId")
-    var pictureId: String = "",
+    @ColumnInfo(name = "picture")
+    var picture: String = "",
 
-    @ColumnInfo(name = "city")
-    var city: String = "",
+    @ColumnInfo(name = "location")
+    var location: String = "",
 
     @ColumnInfo(name = "rating")
     var rating: String = "",
 
-    @ColumnInfo(name = "address")
-    var address: String = "",
 
     @PrimaryKey(autoGenerate = true)
     var uid: Int? = null

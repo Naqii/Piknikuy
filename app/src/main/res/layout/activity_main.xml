@@ -13,8 +13,8 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="@string/let_s_piknikuy"
         android:textColor="@color/gray2"
         android:textSize="35sp"
@@ -22,119 +22,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="30dp"
-        android:background="@color/design_default_color_background"
-        android:textCursorDrawable="@null"
-        app:iconifiedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:queryHint="@string/search_here"
-        app:showDividers="end"/>
-
-    <Button
-        android:id="@+id/btn_hotel"
-        android:layout_width="75dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/white"
-        app:icon="@drawable/ic_hotel"
-        app:iconSize="45dp"
-        app:iconTint="@color/biru_tua"
-        app:layout_constraintEnd_toStartOf="@+id/btn_resto"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/tv_hotel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/hotel"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/btn_hotel"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="@+id/btn_hotel"
-        app:layout_constraintTop_toBottomOf="@+id/btn_hotel" />
-
-    <Button
-        android:id="@+id/btn_wisata"
-        android:layout_width="75dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/white"
-        android:textColor="#00796B"
-        app:icon="@drawable/ic_wisata"
-        app:iconSize="45dp"
-        app:iconTint="@color/biru_tua"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_resto"
-        app:layout_constraintTop_toBottomOf="@+id/search"
-        tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/tv_wisata"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/wisata"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/btn_wisata"
-        app:layout_constraintHorizontal_bias="0.609"
-        app:layout_constraintStart_toStartOf="@+id/btn_wisata"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wisata" />
-
-    <TextView
-        android:id="@+id/tv_resto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/resto"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/btn_resto"
-        app:layout_constraintHorizontal_bias="0.708"
-        app:layout_constraintStart_toStartOf="@+id/btn_resto"
-        app:layout_constraintTop_toBottomOf="@+id/btn_resto" />
-
-    <Button
-        android:id="@+id/btn_resto"
-        android:layout_width="75dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/white"
-        app:icon="@drawable/ic_restaurant"
-        app:iconSize="45dp"
-        app:iconTint="@color/biru_tua"
-        app:layout_constraintEnd_toStartOf="@+id/btn_wisata"
-        app:layout_constraintStart_toEndOf="@+id/btn_hotel"
-        app:layout_constraintTop_toBottomOf="@+id/search"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:background="@color/biru_tua"
         android:minHeight="?actionBarSize"
-        app:layout_constraintTop_toBottomOf="@+id/tv_resto"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="2dp"
         app:tabMode="fixed"
@@ -155,7 +51,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabs"
-        app:layout_constraintVertical_bias="0.042"
+        app:layout_constraintVertical_bias="0.478"
         tools:ignore="MissingConstraints">
 
         <androidx.viewpager2.widget.ViewPager2

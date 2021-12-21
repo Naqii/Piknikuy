@@ -17,8 +17,8 @@ class Helper {
                 val dataResto = ModelResto()
                 dataResto.id = item.getString("id")
                 dataResto.name = item.getString("name")
-                dataResto.city = item.getString("city")
-                dataResto.pictureId = item.getString("pictureId")
+                dataResto.location = item.getString("location")
+                dataResto.picture = item.getString("picture")
                 listResto.add(dataResto)
             }
             return listResto
@@ -27,12 +27,11 @@ class Helper {
         fun detailRestoResponse(item: JSONObject): ModelResto {
             val dataResto = ModelResto()
             dataResto.id = item.getString("id")
-            dataResto.pictureId = item.getString("pictureId")
+            dataResto.picture = item.getString("picture")
             dataResto.name = item.getString("name")
-            dataResto.city = item.getString("city")
-            dataResto.description = item.getString("description")
+            dataResto.location = item.getString("location")
+            dataResto.overview = item.getString("overview")
             dataResto.rating = item.getString("rating")
-            dataResto.address = item.getString("address")
             return dataResto
         }
 
@@ -62,7 +61,7 @@ class Helper {
             return dataHotel
         }
 
-        //for wisata diganti setelah API wisatanya ada
+        //for wisata
         fun listWisataResponse(items: JSONArray): ArrayList<ModelWisata> {
             val listWisata = ArrayList<ModelWisata>()
             for (i in 0 until items.length()) {
@@ -71,7 +70,7 @@ class Helper {
                 dataWisata.id = item.getString("id")
                 dataWisata.name = item.getString("name")
                 dataWisata.city = item.getString("city")
-                dataWisata.pictureId = item.getString("pictureId")
+                dataWisata.picture = item.getString("picture")
                 listWisata.add(dataWisata)
             }
             return listWisata
@@ -80,7 +79,7 @@ class Helper {
         fun detailWisataResponse(item: JSONObject): ModelWisata {
             val dataWisata = ModelWisata()
             dataWisata.id = item.getString("id")
-            dataWisata.pictureId = item.getString("pictureId")
+            dataWisata.picture = item.getString("picture")
             dataWisata.name = item.getString("name")
             dataWisata.city = item.getString("city")
             dataWisata.description = item.getString("description")

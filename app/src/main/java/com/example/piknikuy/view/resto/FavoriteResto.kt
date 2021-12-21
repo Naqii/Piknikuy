@@ -45,7 +45,7 @@ class FavoriteResto : AppCompatActivity() {
             }
         })
 
-        restoViewModel.setSearchResto()
+        restoViewModel.setListResto()
         progressBarDisplay(true)
         restoViewModel.favorite.observe(this, { restoItem->
             if (restoItem != null) {

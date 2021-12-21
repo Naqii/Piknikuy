@@ -40,7 +40,6 @@ class HotelAdapter : RecyclerView.Adapter<HotelAdapter.ListViewHolder>() {
                     .circleCrop()
                     .into(avatarFav)
                 tvName.text = dataHotel.name
-                tvCity.text = dataHotel.city
 
                 itemView.setOnClickListener { onItemClickCallback?.onItemClicked(dataHotel) }
             }

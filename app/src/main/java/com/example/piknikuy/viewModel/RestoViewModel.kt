@@ -32,8 +32,7 @@ class RestoViewModel: ViewModel() {
     private var _favorite = database.select()
     val favorite : LiveData<List<ModelResto>> = _favorite
 
-    fun setSearchResto(query: String? = null) {
-        if(query == null){
+    fun setListResto() {
             ApiConfig.getListResto( object: AsyncHttpResponseHandler(){
                 override fun onSuccess(
                     statusCode: Int,
@@ -43,32 +42,7 @@ class RestoViewModel: ViewModel() {
                     val result = String(responseBody)
                     try {
                         val responseObject = JSONObject(result)
-                        val restoArray = responseObject.getJSONArray("restaurants")
-                        _listResto.postValue(Helper.listRestoResponse(restoArray))
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
-
-                override fun onFailure(
-                    statusCode: Int, headers: Array<Header>,
-                    responseBody: ByteArray,
-                    error: Throwable
-                ) {
-                    Log.d("onFailure", error.message.toString())
-                }
-            })
-        } else {
-            ApiConfig.getSearchResto(query, object: AsyncHttpResponseHandler(){
-                override fun onSuccess(
-                    statusCode: Int,
-                    headers: Array<Header>,
-                    responseBody: ByteArray
-                ) {
-                    val result = String(responseBody)
-                    try {
-                        val responseObject = JSONObject(result)
-                        val restoArray = responseObject.getJSONArray("restaurants")
+                        val restoArray = responseObject.getJSONArray("resto")
                         _listResto.postValue(Helper.listRestoResponse(restoArray))
                     } catch (e: Exception) {
                         e.printStackTrace()
@@ -84,7 +58,6 @@ class RestoViewModel: ViewModel() {
                 }
             })
         }
-    }
 
     fun setDetailResto(id: String) {
         ApiConfig.getDetailResto(id, object: AsyncHttpResponseHandler(){
@@ -96,7 +69,7 @@ class RestoViewModel: ViewModel() {
                 val result = String(responseBody)
                 try {
                     val responseObject = JSONObject(result)
-                    val restoObject = responseObject.getJSONObject("restaurant")
+                    val restoObject = responseObject.getJSONObject("resto")
                     _resto.postValue(Helper.detailRestoResponse(restoObject))
                 } catch (e: Exception) {
                     e.printStackTrace()

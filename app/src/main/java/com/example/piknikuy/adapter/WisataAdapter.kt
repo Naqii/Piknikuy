@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.piknikuy.api.ApiConfig
 import com.example.piknikuy.databinding.ItemListBinding
 import com.example.piknikuy.model.ModelWisata
 
@@ -37,11 +36,10 @@ class WisataAdapter : RecyclerView.Adapter<WisataAdapter.ListViewHolder>() {
         fun bind(dataWisata: ModelWisata) {
             with(binding) {
                 Glide.with(itemView.context)
-                    .load(ApiConfig.BASE_IMG_URL_RESTO + dataWisata.pictureId)
+                    .load(dataWisata.picture)
                     .circleCrop()
                     .into(avatarFav)
                 tvName.text = dataWisata.name
-                tvCity.text = dataWisata.city
 
                 itemView.setOnClickListener { onItemClickCallback?.onItemClicked(dataWisata) }
             }

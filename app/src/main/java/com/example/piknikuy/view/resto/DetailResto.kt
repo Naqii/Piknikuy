@@ -1,8 +1,11 @@
 package com.example.piknikuy.view.resto
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -10,9 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.piknikuy.R
-import com.example.piknikuy.api.ApiConfig
 import com.example.piknikuy.databinding.ActivityDetailRestoBinding
 import com.example.piknikuy.model.ModelResto
+import com.example.piknikuy.setting.SettingActivity
 import com.example.piknikuy.viewModel.RestoViewModel
 
 class DetailResto : AppCompatActivity(), View.OnClickListener{
@@ -36,13 +39,13 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
         restoViewModel.resto.observe(this, {dataResto ->
             if(dataResto != null) {
                 Glide.with(this)
-                    .load(ApiConfig.BASE_IMG_URL_RESTO + dataResto.pictureId)
+                    .load(dataResto.picture)
                     .apply(RequestOptions())
                     .into(binding.tvPicture)
                 binding.tvNamaResto.text = dataResto.name
-                binding.tvLokasiResto.text = dataResto.address + ", " + dataResto.city
+                binding.tvLokasiResto.text = dataResto.location
                 binding.tvRating.text = "Rating: ${dataResto.rating}"
-                binding.tvDetailResto.text = dataResto.description
+                binding.tvDetailResto.text = dataResto.overview
                 actionbar!!.title = "Detail ${dataResto.name}"
                 actionbar.setDisplayHomeAsUpEnabled(true)
                 resto = dataResto
@@ -110,5 +113,27 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
     companion object {
         const val EXTRA_RESTO = "extra_resto"
         const val ALERT_DIALOG_CLOSE = 10
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.favorite -> {
+                val f = Intent(this, FavoriteResto::class.java)
+                startActivity(f)
+                true
+            }
+            R.id.setting -> {
+                val s = Intent(this, SettingActivity::class.java)
+                startActivity(s)
+                true
+            }
+            else -> true
+        }
     }
 }

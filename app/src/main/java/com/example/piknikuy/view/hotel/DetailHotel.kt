@@ -1,7 +1,10 @@
 package com.example.piknikuy.view.hotel
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -12,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.piknikuy.R
 import com.example.piknikuy.databinding.ActivityDetailHotelBinding
 import com.example.piknikuy.model.ModelHotel
+import com.example.piknikuy.setting.SettingActivity
 import com.example.piknikuy.viewModel.HotelViewModel
 
 class DetailHotel : AppCompatActivity(), View.OnClickListener {
@@ -110,4 +114,26 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
         const val EXTRA_HOTEL = "extra_hotel"
         const val ALERT_DIALOG_CLOSE = 10
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.favorite -> {
+                val f = Intent(this, FavoriteHotel::class.java)
+                startActivity(f)
+                true
+            }
+            R.id.setting -> {
+                val s = Intent(this, SettingActivity::class.java)
+                startActivity(s)
+                true
+            }
+            else -> true
+        }
+    }
+
 }

@@ -45,7 +45,7 @@ class FavoriteWisata : AppCompatActivity() {
             }
         })
 
-        wisataViewModel.setSearchWisata()
+        wisataViewModel.setListWisata()
         progressBarDisplay(true)
         wisataViewModel.favorite.observe(this, { wisataItem ->
             if (wisataItem != null) {

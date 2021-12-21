@@ -11,16 +11,9 @@ class ApiConfig {
         private val client = AsyncHttpClient()
 
         //for restaurant
-        private const val BASE_URL_RESTO = "https://restaurant-api.dicoding.dev"
-        const val BASE_IMG_URL_RESTO = "https://restaurant-api.dicoding.dev/images/medium/"
-
+        private const val BASE_URL_RESTO = "http://makan.mocklab.io/resto"
         fun getListResto( responseHandler: AsyncHttpResponseHandler): RequestHandle? {
-            val url = "$BASE_URL_RESTO/list"
-            return client.get(url, responseHandler)
-        }
-
-        fun getSearchResto(query: String, responseHandler: AsyncHttpResponseHandler): RequestHandle? {
-            val url = "$BASE_URL_RESTO/search?q=$query"
+            val url = "$BASE_URL_RESTO/lists"
             return client.get(url, responseHandler)
         }
 
@@ -43,6 +36,17 @@ class ApiConfig {
         }
 
         //for wisata
+        private const val BASE_URL_WISATA = "http://destinations.mocklab.io/wisata"
+
+        fun getListWisata( responseHandler: AsyncHttpResponseHandler): RequestHandle? {
+            val url = "$BASE_URL_WISATA/list"
+            return client.get(url, responseHandler)
+        }
+
+        fun getDetailWisata(id: String, responseHandler: AsyncHttpResponseHandler): RequestHandle? {
+            val url = "$BASE_URL_WISATA/detail/$id"
+            return client.get(url, responseHandler)
+        }
 
     }
 }

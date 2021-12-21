@@ -32,8 +32,7 @@ class HotelViewModel : ViewModel() {
     private var _favorite = database.select()
     val favorite : LiveData<List<ModelHotel>> = _favorite
 
-    fun setSearchHotel(query: String? = null) {
-        if(query == null){
+    fun setListHotel() {
             ApiConfig.getListHotel( object: AsyncHttpResponseHandler(){
                 override fun onSuccess(
                     statusCode: Int,
@@ -58,32 +57,6 @@ class HotelViewModel : ViewModel() {
                     Log.d("onFailure", error.message.toString())
                 }
             })
-        } else {
-           /* ApiConfig.getSearchHotel(query, object: AsyncHttpResponseHandler(){
-                override fun onSuccess(
-                    statusCode: Int,
-                    headers: Array<Header>,
-                    responseBody: ByteArray
-                ) {
-                    val result = String(responseBody)
-                    try {
-                        val responseObject = JSONObject(result)
-                        val hotelArray = responseObject.getJSONArray("hotels")
-                        _listHotel.postValue(Helper.listHotelResponse(restoArray))
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
-
-                override fun onFailure(
-                    statusCode: Int, headers: Array<Header>,
-                    responseBody: ByteArray,
-                    error: Throwable
-                ) {
-                    Log.d("onFailure", error.message.toString())
-                }
-            })*/
-        }
     }
 
     fun setDetailHotel(id: String) {

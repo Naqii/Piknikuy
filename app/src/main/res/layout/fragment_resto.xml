@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.TopVisitorFragment">
+    tools:context=".view.fragment.RestoFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_topvisitor"
+        android:id="@+id/list_resto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_top_visitor"/>
+        tools:listitem="@layout/item_trend"/>
 
     <ProgressBar
         android:id="@+id/progressBar"

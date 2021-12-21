@@ -20,8 +20,8 @@ data class ModelWisata (
     @ColumnInfo(name = "description")
     var description: String = "",
 
-    @ColumnInfo(name = "pictureId")
-    var pictureId: String = "",
+    @ColumnInfo(name = "picture")
+    var picture: String = "",
 
     @ColumnInfo(name = "city")
     var city: String = "",

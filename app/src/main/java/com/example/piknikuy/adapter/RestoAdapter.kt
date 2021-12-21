@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.piknikuy.api.ApiConfig
 import com.example.piknikuy.databinding.ItemListBinding
 import com.example.piknikuy.model.ModelResto
 
@@ -37,11 +36,10 @@ class RestoAdapter : RecyclerView.Adapter<RestoAdapter.ListViewHolder>() {
         fun bind(dataResto: ModelResto) {
             with(binding) {
                 Glide.with(itemView.context)
-                    .load(ApiConfig.BASE_IMG_URL_RESTO + dataResto.pictureId)
+                    .load(dataResto.picture)
                     .circleCrop()
                     .into(avatarFav)
                 tvName.text = dataResto.name
-                tvCity.text = dataResto.city
 
                 itemView.setOnClickListener { onItemClickCallback?.onItemClicked(dataResto) }
             }
