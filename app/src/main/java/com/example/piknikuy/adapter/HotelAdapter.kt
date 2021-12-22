@@ -37,7 +37,6 @@ class HotelAdapter : RecyclerView.Adapter<HotelAdapter.ListViewHolder>() {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(dataHotel.picture)
-                    .circleCrop()
                     .into(avatarFav)
                 tvName.text = dataHotel.name
 

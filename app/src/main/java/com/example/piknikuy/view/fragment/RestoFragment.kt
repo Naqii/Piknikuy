@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.piknikuy.adapter.RestoAdapter
 import com.example.piknikuy.databinding.FragmentRestoBinding
@@ -42,7 +43,7 @@ class RestoFragment : Fragment() {
         })
 
         binding.listResto.adapter = restoAdapter
-        binding.listResto.layoutManager = LinearLayoutManager(requireContext())
+        binding.listResto.layoutManager = GridLayoutManager(requireContext(), 2)
         restoViewModel.setListResto()
         restoViewModel.listResto.observe(requireActivity(), { restoItem ->
             if (restoItem!= null){

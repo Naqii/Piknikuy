@@ -37,7 +37,6 @@ class WisataAdapter : RecyclerView.Adapter<WisataAdapter.ListViewHolder>() {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(dataWisata.picture)
-                    .circleCrop()
                     .into(avatarFav)
                 tvName.text = dataWisata.name
 

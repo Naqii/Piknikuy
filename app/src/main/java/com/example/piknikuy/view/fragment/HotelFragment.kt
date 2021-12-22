@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.piknikuy.adapter.HotelAdapter
 import com.example.piknikuy.databinding.FragmentHotelBinding
@@ -42,7 +43,7 @@ class HotelFragment : Fragment() {
         })
 
         binding.listHotel.adapter = hotelAdapter
-        binding.listHotel.layoutManager = LinearLayoutManager(requireContext())
+        binding.listHotel.layoutManager = GridLayoutManager(requireContext(), 2)
         hotelViewModel.setListHotel()
         hotelViewModel.listHotel.observe(requireActivity(), {  hotelItem ->
             if (hotelItem!= null){

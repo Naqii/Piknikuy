@@ -4,23 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/biru_muda"
     android:id="@+id/container"
     tools:context=".view.MainActivity">
 
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/let_s_piknikuy"
-        android:textColor="@color/gray2"
-        android:textSize="35sp"
-        android:textStyle="bold"
+    <ImageView
+        android:id="@+id/img_piknukuy"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/piknikuy" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
@@ -28,14 +24,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginTop="32dp"
-        android:background="@color/biru_tua"
+        android:background="@color/biru_muda"
         android:minHeight="?actionBarSize"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/img_piknukuy"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="2dp"
         app:tabMode="fixed"
         app:tabRippleColor="@null"
-        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/white"
+        android:scrollbarStyle="outsideInset"
+        app:tabIndicatorColor="@color/black"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabSelectedTextColor="@color/black"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
         tools:layout_editor_absoluteX="0dp" />
 

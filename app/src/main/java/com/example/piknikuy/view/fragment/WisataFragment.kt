@@ -1,5 +1,6 @@
 package com.example.piknikuy.view.fragment
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.piknikuy.R
 import com.example.piknikuy.adapter.WisataAdapter
 import com.example.piknikuy.databinding.FragmentWisataBinding
 import com.example.piknikuy.model.ModelWisata
@@ -38,11 +40,12 @@ class WisataFragment : Fragment() {
                 val moveIntent = Intent(requireContext(), DetailWisata::class.java)
                 moveIntent.putExtra(DetailWisata.EXTRA_WISATA, data.id)
                 startActivity(moveIntent)
+                //
             }
         })
 
         binding.listWisata.adapter = wisataAdapter
-        binding.listWisata.layoutManager = LinearLayoutManager(requireContext())
+        binding.listWisata.layoutManager = GridLayoutManager(requireContext(), 2)
         wisataViewModel.setListWisata()
         wisataViewModel.listWisata.observe(requireActivity(), { wisataItem ->
             if (wisataItem!= null){
@@ -67,5 +70,8 @@ class WisataFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+
     }
+
+
 }

@@ -12,5 +12,8 @@
     <color name="biru_tua">#00AC93</color>
     <color name="orange">#7EF97C3A</color>
     <color name="gray">#79D5D5D5</color>
-    <color name="gray2">#2E2B28</color>
+    <color name="gray2">#334756</color>
+    <color name="dongker">#082032</color>
+    <color name="orange2">#16697A</color>
+
 </resources>

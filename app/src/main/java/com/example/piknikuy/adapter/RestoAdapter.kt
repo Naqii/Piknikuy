@@ -37,7 +37,6 @@ class RestoAdapter : RecyclerView.Adapter<RestoAdapter.ListViewHolder>() {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(dataResto.picture)
-                    .circleCrop()
                     .into(avatarFav)
                 tvName.text = dataResto.name
 
