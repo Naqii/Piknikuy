@@ -21,7 +21,8 @@ class WisataAdapter : RecyclerView.Adapter<WisataAdapter.ListViewHolder>() {
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
-        val binding = ItemListBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        val binding =
+            ItemListBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         return ListViewHolder(binding)
     }
 
@@ -38,6 +39,7 @@ class WisataAdapter : RecyclerView.Adapter<WisataAdapter.ListViewHolder>() {
                 Glide.with(itemView.context)
                     .load(dataWisata.picture)
                     .into(avatarFav)
+
                 tvName.text = dataWisata.name
 
                 itemView.setOnClickListener { onItemClickCallback?.onItemClicked(dataWisata) }

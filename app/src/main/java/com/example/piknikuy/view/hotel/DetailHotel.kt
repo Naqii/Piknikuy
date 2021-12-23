@@ -29,8 +29,6 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
         binding = ActivityDetailHotelBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val actionbar = supportActionBar
-
         hotelViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[HotelViewModel::class.java]
         val id = intent.getStringExtra(EXTRA_HOTEL) as String
 
@@ -41,12 +39,16 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
                     .load(dataHotel.picture)
                     .apply(RequestOptions())
                     .into(binding.tvPicture)
+                Glide.with(this)
+                    .load(dataHotel.status)
+                    .apply(RequestOptions())
+                    .into(binding.statusItem)
                 binding.tvNamaHotel.text = dataHotel.name
                 binding.tvLokasiHotel.text = dataHotel.city
                 binding.tvRating.text = "Rating: ${dataHotel.rating}"
                 binding.tvDetailHotel.text = dataHotel.description
-                actionbar!!.title = "Detail ${dataHotel.name}"
-                actionbar.setDisplayHomeAsUpEnabled(true)
+                supportActionBar?.title = "Detail ${dataHotel.name}"
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 hotel = dataHotel
                 hotelViewModel.updateFavorite(hotel)
                 showLoading(false)
@@ -105,11 +107,6 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
-
     companion object {
         const val EXTRA_HOTEL = "extra_hotel"
         const val ALERT_DIALOG_CLOSE = 10
@@ -135,5 +132,14 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
             else -> true
         }
     }
+
+    override fun onBackPressed() {
+        finish()
+    }
+
+//    override fun onSupportNavigateUp(): Boolean {
+//        onBackPressed()
+//        return true
+//    }
 
 }

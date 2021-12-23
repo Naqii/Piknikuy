@@ -32,6 +32,9 @@ data class ModelWisata (
     @ColumnInfo(name = "address")
     var address: String = "",
 
+    @ColumnInfo(name = "status")
+    var status: String = "",
+
     @PrimaryKey(autoGenerate = true)
     var uid: Int? = null
 ) : Parcelable {

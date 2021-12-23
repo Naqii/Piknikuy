@@ -29,6 +29,8 @@ data class ModelResto (
     @ColumnInfo(name = "rating")
     var rating: String = "",
 
+    @ColumnInfo(name = "status")
+    var status: String = "",
 
     @PrimaryKey(autoGenerate = true)
     var uid: Int? = null

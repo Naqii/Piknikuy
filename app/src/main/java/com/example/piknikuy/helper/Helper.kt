@@ -32,6 +32,7 @@ class Helper {
             dataResto.location = item.getString("location")
             dataResto.overview = item.getString("overview")
             dataResto.rating = item.getString("rating")
+            dataResto.status = item.getString("status")
             return dataResto
         }
 
@@ -58,6 +59,7 @@ class Helper {
             dataHotel.city = item.getString("city")
             dataHotel.description = item.getString("description")
             dataHotel.rating = item.getString("rating")
+            dataHotel.status = item.getString("status")
             return dataHotel
         }
 
@@ -85,6 +87,7 @@ class Helper {
             dataWisata.description = item.getString("description")
             dataWisata.rating = item.getString("rating")
             dataWisata.address = item.getString("address")
+            dataWisata.status = item.getString("status")
             return dataWisata
         }
     }

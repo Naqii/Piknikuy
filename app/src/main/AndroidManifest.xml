@@ -22,11 +22,8 @@
             android:name=".view.wisata.FavoriteWisata"
             android:exported="true" />
         <activity
-            android:name=".view.wisata.WisataActivity"
-            android:exported="false"/>
-        <activity
             android:name=".view.wisata.DetailWisata"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".setting.SettingActivity"
             android:exported="false" />
@@ -37,16 +34,10 @@
             android:name=".view.hotel.DetailHotel"
             android:exported="true" />
         <activity
-            android:name=".view.hotel.HotelActivity"
-            android:exported="true" />
-        <activity
             android:name=".view.resto.FavoriteResto"
             android:exported="true" />
         <activity
             android:name=".view.resto.DetailResto"
-            android:exported="true" />
-        <activity
-            android:name=".view.resto.RestoActivity"
             android:exported="true" />
         <activity
             android:name=".view.MainActivity"
@@ -54,7 +45,7 @@
         <activity
             android:name=".view.SplashScreen"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

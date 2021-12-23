@@ -30,8 +30,6 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
         detailWisataBinding = ActivityDetailWisataBinding.inflate(layoutInflater)
         setContentView(detailWisataBinding.root)
 
-        val actionbar = supportActionBar
-
         wisataViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[WisataViewModel::class.java]
         val id = intent.getStringExtra(EXTRA_WISATA) as String
 
@@ -42,12 +40,16 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
                     .load(dataWisata.picture)
                     .apply(RequestOptions())
                     .into(detailWisataBinding.tvPicture)
+                Glide.with(this)
+                    .load(dataWisata.status)
+                    .apply(RequestOptions())
+                    .into(detailWisataBinding.statusItem)
                 detailWisataBinding.tvNamaWisata.text = dataWisata.name
                 detailWisataBinding.tvLokasiWisata.text = dataWisata.address + ", " + dataWisata.city
-                detailWisataBinding.tvRating.text = "Rating: ${dataWisata.rating}"
+                detailWisataBinding.tvRating.text = "Rating : ${dataWisata.rating}"
                 detailWisataBinding.tvDetailWisata.text = dataWisata.description
-                actionbar!!.title = "Detail ${dataWisata.name}"
-                actionbar.setDisplayHomeAsUpEnabled(true)
+                supportActionBar?.title = "Detail ${dataWisata.name}"
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 wisata = dataWisata
                 wisataViewModel.updateFavorite(wisata)
                 showLoading(false)
@@ -105,14 +107,6 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    companion object {
-        const val EXTRA_WISATA = "extra_wisata"
-        const val ALERT_DIALOG_CLOSE = 30
-    }
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.option_menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -133,4 +127,17 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
             else -> true
         }
     }
+
+    companion object {
+        const val EXTRA_WISATA = "extra_wisata"
+        const val ALERT_DIALOG_CLOSE = 30
+    }
+
+    override fun onBackPressed() {
+        finish()
+    }
+//    override fun onSupportNavigateUp(): Boolean {
+//        onBackPressed()
+//        return true
+//    }
 }

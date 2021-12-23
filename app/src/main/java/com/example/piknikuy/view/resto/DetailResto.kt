@@ -30,8 +30,6 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
         binding = ActivityDetailRestoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val actionbar = supportActionBar
-
         restoViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RestoViewModel::class.java]
         val id = intent.getStringExtra(EXTRA_RESTO) as String
 
@@ -42,12 +40,16 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
                     .load(dataResto.picture)
                     .apply(RequestOptions())
                     .into(binding.tvPicture)
+                Glide.with(this)
+                    .load(dataResto.status)
+                    .apply(RequestOptions())
+                    .into(binding.statusItem)
                 binding.tvNamaResto.text = dataResto.name
                 binding.tvLokasiResto.text = dataResto.location
                 binding.tvRating.text = "Rating: ${dataResto.rating}"
                 binding.tvDetailResto.text = dataResto.overview
-                actionbar!!.title = "Detail ${dataResto.name}"
-                actionbar.setDisplayHomeAsUpEnabled(true)
+                supportActionBar?.title = "Detail ${dataResto.name}"
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 resto = dataResto
                 restoViewModel.updateFavorite(resto)
                 showLoading(false)
@@ -90,8 +92,10 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
                 }
                 finish()
             }
-            setNegativeButton(getString(R.string.no)) {dialog, _ -> dialog.cancel()
+            val negativeButton = setNegativeButton(getString(R.string.no)) { dialog, _ ->
+                dialog.cancel()
             }
+            return@with negativeButton
         }
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
