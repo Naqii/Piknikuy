@@ -20,7 +20,7 @@
         tools:ignore="AllowBackup">
         <activity
             android:name=".view.wisata.FavoriteWisata"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".view.wisata.DetailWisata"
             android:exported="true" />
@@ -29,13 +29,13 @@
             android:exported="false" />
         <activity
             android:name=".view.hotel.FavoriteHotel"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".view.hotel.DetailHotel"
             android:exported="true" />
         <activity
             android:name=".view.resto.FavoriteResto"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".view.resto.DetailResto"
             android:exported="true" />
@@ -45,7 +45,7 @@
         <activity
             android:name=".view.SplashScreen"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

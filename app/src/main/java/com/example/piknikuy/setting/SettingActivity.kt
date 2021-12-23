@@ -10,6 +10,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.piknikuy.R
+import com.example.piknikuy.setting.SettingPreferences
 import com.example.piknikuy.viewModel.SettingsViewModel
 import com.example.piknikuy.viewModel.ViewModelFactory
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -27,7 +28,9 @@ class SettingActivity : AppCompatActivity() {
         val switchTheme = findViewById<SwitchMaterial>(R.id.switch_theme)
 
         val pref = SettingPreferences.getInstance(dataStore)
-        val settingViewModel = ViewModelProvider(this, ViewModelFactory(pref))[SettingsViewModel::class.java]
+        val settingViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
+            SettingsViewModel::class.java
+        )
         settingViewModel.getThemeSettings().observe(this,
             { isDarkModeActive: Boolean ->
                 if (isDarkModeActive) {
@@ -39,7 +42,7 @@ class SettingActivity : AppCompatActivity() {
                 }
             })
 
-        switchTheme.setOnCheckedChangeListener{ _: CompoundButton?, isChecked: Boolean ->
+        switchTheme.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
             settingViewModel.saveThemeSetting(isChecked)
         }
     }
