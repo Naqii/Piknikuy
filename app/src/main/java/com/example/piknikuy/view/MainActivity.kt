@@ -6,8 +6,15 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
+import androidx.core.view.marginTop
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.piknikuy.R
 import com.example.piknikuy.adapter.SectionsPagerAdapter
@@ -25,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
 
         supportActionBar?.title = getString(R.string.piknikuy)
-
         tabLayout()
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_YES -> {
@@ -33,8 +39,13 @@ class MainActivity : AppCompatActivity() {
                 activityMainBinding.tabs.setBackgroundColor(Color.TRANSPARENT)
                 activityMainBinding.tabs.setSelectedTabIndicatorColor(Color.YELLOW)
                 activityMainBinding.tabs.setTabTextColors(Color.WHITE, Color.YELLOW)
-
             }
+        }
+
+        if(applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            activityMainBinding.imgPiknukuy.isVisible = false
+            val param = activityMainBinding.tabs.layoutParams as ViewGroup.MarginLayoutParams
+            param.setMargins(0,0,0,0)
         }
 
     }
