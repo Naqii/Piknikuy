@@ -129,17 +129,13 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
                 startActivity(s)
                 true
             }
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
             else -> true
         }
     }
 
-    override fun onBackPressed() {
-        finish()
-    }
-
-//    override fun onSupportNavigateUp(): Boolean {
-//        onBackPressed()
-//        return true
-//    }
 
 }

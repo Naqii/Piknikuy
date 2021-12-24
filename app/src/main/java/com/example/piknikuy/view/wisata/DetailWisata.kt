@@ -124,6 +124,10 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
                 startActivity(s)
                 true
             }
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
             else -> true
         }
     }
@@ -132,12 +136,4 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
         const val EXTRA_WISATA = "extra_wisata"
         const val ALERT_DIALOG_CLOSE = 30
     }
-
-    override fun onBackPressed() {
-        finish()
-    }
-//    override fun onSupportNavigateUp(): Boolean {
-//        onBackPressed()
-//        return true
-//    }
 }

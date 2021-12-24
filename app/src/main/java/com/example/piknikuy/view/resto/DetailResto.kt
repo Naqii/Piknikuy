@@ -109,10 +109,6 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
 
     companion object {
         const val EXTRA_RESTO = "extra_resto"
@@ -135,6 +131,10 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
             R.id.setting -> {
                 val s = Intent(this, SettingActivity::class.java)
                 startActivity(s)
+                true
+            }
+            android.R.id.home -> {
+                onBackPressed()
                 true
             }
             else -> true
