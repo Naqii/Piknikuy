@@ -30,11 +30,14 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
         detailWisataBinding = ActivityDetailWisataBinding.inflate(layoutInflater)
         setContentView(detailWisataBinding.root)
 
-        wisataViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[WisataViewModel::class.java]
+        wisataViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[WisataViewModel::class.java]
         val id = intent.getStringExtra(EXTRA_WISATA) as String
 
         wisataViewModel.setDetailWisata(id)
-        wisataViewModel.wisata.observe(this, {dataWisata ->
+        wisataViewModel.wisata.observe(this, { dataWisata ->
             if (dataWisata != null) {
                 Glide.with(this)
                     .load(dataWisata.picture)
@@ -45,7 +48,8 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
                     .apply(RequestOptions())
                     .into(detailWisataBinding.statusItem)
                 detailWisataBinding.tvNamaWisata.text = dataWisata.name
-                detailWisataBinding.tvLokasiWisata.text = dataWisata.address + ", " + dataWisata.city
+                detailWisataBinding.tvLokasiWisata.text =
+                    dataWisata.address + ", " + dataWisata.city
                 detailWisataBinding.tvRating.text = "Rating : ${dataWisata.rating}"
                 detailWisataBinding.tvDetailWisata.text = dataWisata.description
                 supportActionBar?.title = "Detail ${dataWisata.name}"
@@ -57,7 +61,7 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
         })
 
         wisataViewModel.isFavorite.observe(this, {
-            if(wisataViewModel.isFavorite.value == true){
+            if (wisataViewModel.isFavorite.value == true) {
                 detailWisataBinding.btnFav.setImageResource(R.drawable.ic_favorite)
             } else {
                 detailWisataBinding.btnFav.setImageResource(R.drawable.ic_favorite_border)
@@ -92,7 +96,8 @@ class DetailWisata : AppCompatActivity(), View.OnClickListener {
                 }
                 finish()
             }
-            setNegativeButton(getString(R.string.no)) { dialog, _ -> dialog.cancel()
+            setNegativeButton(getString(R.string.no)) { dialog, _ ->
+                dialog.cancel()
             }
         }
         val alertDialog = alertDialogBuilder.create()

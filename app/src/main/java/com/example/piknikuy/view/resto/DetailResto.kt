@@ -18,7 +18,7 @@ import com.example.piknikuy.model.ModelResto
 import com.example.piknikuy.setting.SettingActivity
 import com.example.piknikuy.viewModel.RestoViewModel
 
-class DetailResto : AppCompatActivity(), View.OnClickListener{
+class DetailResto : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityDetailRestoBinding
     private lateinit var resto: ModelResto
@@ -30,12 +30,15 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
         binding = ActivityDetailRestoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        restoViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RestoViewModel::class.java]
+        restoViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[RestoViewModel::class.java]
         val id = intent.getStringExtra(EXTRA_RESTO) as String
 
         restoViewModel.setDetailResto(id)
-        restoViewModel.resto.observe(this, {dataResto ->
-            if(dataResto != null) {
+        restoViewModel.resto.observe(this, { dataResto ->
+            if (dataResto != null) {
                 Glide.with(this)
                     .load(dataResto.picture)
                     .apply(RequestOptions())
@@ -57,7 +60,7 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
         })
 
         restoViewModel.isFavorite.observe(this, {
-            if(restoViewModel.isFavorite.value == true){
+            if (restoViewModel.isFavorite.value == true) {
                 binding.btnFav.setImageResource(R.drawable.ic_favorite)
             } else {
                 binding.btnFav.setImageResource(R.drawable.ic_favorite_border)
@@ -85,7 +88,7 @@ class DetailResto : AppCompatActivity(), View.OnClickListener{
             setTitle(dialogTitle)
             setMessage(dialogMessage)
             setCancelable(false)
-            setPositiveButton(R.string.Yes) {_, _ ->
+            setPositiveButton(R.string.Yes) { _, _ ->
                 if (isDialogClose) {
                     restoViewModel.deleteFavorite(resto)
                     showToast(getString(R.string.deleted))

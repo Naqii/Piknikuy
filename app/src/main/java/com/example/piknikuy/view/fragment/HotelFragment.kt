@@ -2,13 +2,12 @@ package com.example.piknikuy.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.piknikuy.adapter.HotelAdapter
 import com.example.piknikuy.databinding.FragmentHotelBinding
 import com.example.piknikuy.model.ModelHotel
@@ -31,7 +30,10 @@ class HotelFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        hotelViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[HotelViewModel::class.java]
+        hotelViewModel = ViewModelProvider(
+            requireActivity(),
+            ViewModelProvider.NewInstanceFactory()
+        )[HotelViewModel::class.java]
 
         hotelAdapter = HotelAdapter()
         hotelAdapter.setOnItemClickCallback(object : HotelAdapter.OnItemClickCallback {
@@ -45,8 +47,8 @@ class HotelFragment : Fragment() {
         binding.listHotel.adapter = hotelAdapter
         binding.listHotel.layoutManager = GridLayoutManager(requireContext(), 2)
         hotelViewModel.setListHotel()
-        hotelViewModel.listHotel.observe(requireActivity(), {  hotelItem ->
-            if (hotelItem!= null){
+        hotelViewModel.listHotel.observe(requireActivity(), { hotelItem ->
+            if (hotelItem != null) {
                 hotelAdapter.listHotel = hotelItem
                 progressBarDisplay(false)
             }

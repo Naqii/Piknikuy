@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity() {
             val param = activityMainBinding.tabs.layoutParams as ViewGroup.MarginLayoutParams
             param.setMargins(0,0,0,0)
         }
-
     }
 
     private fun tabLayout() {

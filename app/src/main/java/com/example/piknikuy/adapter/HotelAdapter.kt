@@ -21,7 +21,8 @@ class HotelAdapter : RecyclerView.Adapter<HotelAdapter.ListViewHolder>() {
         }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
-        val binding = ItemListBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        val binding =
+            ItemListBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         return ListViewHolder(binding)
     }
 

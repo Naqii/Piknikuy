@@ -29,12 +29,15 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
         binding = ActivityDetailHotelBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        hotelViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[HotelViewModel::class.java]
+        hotelViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[HotelViewModel::class.java]
         val id = intent.getStringExtra(EXTRA_HOTEL) as String
 
         hotelViewModel.setDetailHotel(id)
-        hotelViewModel.hotel.observe(this, {dataHotel ->
-            if(dataHotel != null) {
+        hotelViewModel.hotel.observe(this, { dataHotel ->
+            if (dataHotel != null) {
                 Glide.with(this)
                     .load(dataHotel.picture)
                     .apply(RequestOptions())
@@ -56,7 +59,7 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
         })
 
         hotelViewModel.isFavorite.observe(this, {
-            if(hotelViewModel.isFavorite.value == true){
+            if (hotelViewModel.isFavorite.value == true) {
                 binding.btnFav.setImageResource(R.drawable.ic_favorite)
             } else {
                 binding.btnFav.setImageResource(R.drawable.ic_favorite_border)
@@ -92,7 +95,8 @@ class DetailHotel : AppCompatActivity(), View.OnClickListener {
                 }
                 finish()
             }
-            setNegativeButton(getString(R.string.no)) { dialog, _ -> dialog.cancel()
+            setNegativeButton(getString(R.string.no)) { dialog, _ ->
+                dialog.cancel()
             }
         }
         val alertDialog = alertDialogBuilder.create()

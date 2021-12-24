@@ -18,7 +18,10 @@ import com.example.piknikuy.viewModel.ViewModelFactory
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
-    private val android.content.Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+    private val android.content.Context.dataStore: DataStore<Preferences> by preferencesDataStore(
+        name = "settings"
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)

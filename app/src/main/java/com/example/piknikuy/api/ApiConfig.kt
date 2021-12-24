@@ -12,7 +12,7 @@ class ApiConfig {
 
         //for restaurant
         private const val BASE_URL_RESTO = "http://restopiknikuy.mocklab.io/resto"
-        fun getListResto( responseHandler: AsyncHttpResponseHandler): RequestHandle? {
+        fun getListResto(responseHandler: AsyncHttpResponseHandler): RequestHandle? {
             val url = "$BASE_URL_RESTO/lists"
             return client.get(url, responseHandler)
         }
@@ -25,7 +25,7 @@ class ApiConfig {
         //for hotel
         private const val BASE_URL_HOTEL = "http://hotelpiknikuy.mocklab.io/hotels"
 
-        fun getListHotel( responseHandler: AsyncHttpResponseHandler): RequestHandle? {
+        fun getListHotel(responseHandler: AsyncHttpResponseHandler): RequestHandle? {
             val url = "$BASE_URL_HOTEL/list"
             return client.get(url, responseHandler)
         }
@@ -38,7 +38,7 @@ class ApiConfig {
         //for wisata
         private const val BASE_URL_WISATA = "http://wisatapiknikuy.mocklab.io/wisata"
 
-        fun getListWisata( responseHandler: AsyncHttpResponseHandler): RequestHandle? {
+        fun getListWisata(responseHandler: AsyncHttpResponseHandler): RequestHandle? {
             val url = "$BASE_URL_WISATA/list"
             return client.get(url, responseHandler)
         }

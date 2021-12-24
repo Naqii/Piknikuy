@@ -2,13 +2,12 @@ package com.example.piknikuy.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.piknikuy.adapter.RestoAdapter
 import com.example.piknikuy.databinding.FragmentRestoBinding
 import com.example.piknikuy.model.ModelResto
@@ -31,7 +30,10 @@ class RestoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        restoViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[RestoViewModel::class.java]
+        restoViewModel = ViewModelProvider(
+            requireActivity(),
+            ViewModelProvider.NewInstanceFactory()
+        )[RestoViewModel::class.java]
 
         restoAdapter = RestoAdapter()
         restoAdapter.setOnItemClickCallback(object : RestoAdapter.OnItemClickCallback {
@@ -46,7 +48,7 @@ class RestoFragment : Fragment() {
         binding.listResto.layoutManager = GridLayoutManager(requireContext(), 2)
         restoViewModel.setListResto()
         restoViewModel.listResto.observe(requireActivity(), { restoItem ->
-            if (restoItem!= null){
+            if (restoItem != null) {
                 restoAdapter.listResto = restoItem
                 progressBarDisplay(false)
             }

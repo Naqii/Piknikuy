@@ -1,15 +1,13 @@
 package com.example.piknikuy.view.fragment
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.piknikuy.R
 import com.example.piknikuy.adapter.WisataAdapter
 import com.example.piknikuy.databinding.FragmentWisataBinding
 import com.example.piknikuy.model.ModelWisata
@@ -32,7 +30,10 @@ class WisataFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        wisataViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[WisataViewModel::class.java]
+        wisataViewModel = ViewModelProvider(
+            requireActivity(),
+            ViewModelProvider.NewInstanceFactory()
+        )[WisataViewModel::class.java]
 
         wisataAdapter = WisataAdapter()
         wisataAdapter.setOnItemClickCallback(object : WisataAdapter.OnItemClickCallback {
@@ -40,7 +41,6 @@ class WisataFragment : Fragment() {
                 val moveIntent = Intent(requireContext(), DetailWisata::class.java)
                 moveIntent.putExtra(DetailWisata.EXTRA_WISATA, data.id)
                 startActivity(moveIntent)
-                //
             }
         })
 
@@ -48,7 +48,7 @@ class WisataFragment : Fragment() {
         binding.listWisata.layoutManager = GridLayoutManager(requireContext(), 2)
         wisataViewModel.setListWisata()
         wisataViewModel.listWisata.observe(requireActivity(), { wisataItem ->
-            if (wisataItem!= null){
+            if (wisataItem != null) {
                 wisataAdapter.listWisata = wisataItem
                 progressBarDisplay(false)
             }

@@ -16,51 +16,51 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.lang.Exception
 
-class WisataViewModel: ViewModel() {
+class WisataViewModel : ViewModel() {
 
     private var database = PiknikuyDatabase.getDatabase().wisataDao()
 
     private var _listWisata = MutableLiveData<ArrayList<ModelWisata>>()
-    val listWisata : LiveData<ArrayList<ModelWisata>> = _listWisata
+    val listWisata: LiveData<ArrayList<ModelWisata>> = _listWisata
 
     private var _wisata = MutableLiveData<ModelWisata>()
-    val wisata : LiveData<ModelWisata> = _wisata
+    val wisata: LiveData<ModelWisata> = _wisata
 
     private var _isFavorite = MutableLiveData<Boolean>()
-    val isFavorite : LiveData<Boolean> = _isFavorite
+    val isFavorite: LiveData<Boolean> = _isFavorite
 
     private var _favorite = database.select()
-    val favorite : LiveData<List<ModelWisata>> = _favorite
+    val favorite: LiveData<List<ModelWisata>> = _favorite
 
     fun setListWisata() {
-        ApiConfig.getListWisata( object: AsyncHttpResponseHandler(){
-                override fun onSuccess(
-                    statusCode: Int,
-                    headers: Array<Header>,
-                    responseBody: ByteArray
-                ) {
-                    val result = String(responseBody)
-                    try {
-                        val responseObject = JSONObject(result)
-                        val wisataArray = responseObject.getJSONArray("destination")
-                        _listWisata.postValue(Helper.listWisataResponse(wisataArray))
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
+        ApiConfig.getListWisata(object : AsyncHttpResponseHandler() {
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<Header>,
+                responseBody: ByteArray
+            ) {
+                val result = String(responseBody)
+                try {
+                    val responseObject = JSONObject(result)
+                    val wisataArray = responseObject.getJSONArray("destination")
+                    _listWisata.postValue(Helper.listWisataResponse(wisataArray))
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
+            }
 
-                override fun onFailure(
-                    statusCode: Int, headers: Array<Header>,
-                    responseBody: ByteArray,
-                    error: Throwable
-                ) {
-                    Log.d("onFailure", error.message.toString())
-                }
-            })
-        }
+            override fun onFailure(
+                statusCode: Int, headers: Array<Header>,
+                responseBody: ByteArray,
+                error: Throwable
+            ) {
+                Log.d("onFailure", error.message.toString())
+            }
+        })
+    }
 
     fun setDetailWisata(id: String) {
-        ApiConfig.getDetailWisata(id, object: AsyncHttpResponseHandler(){
+        ApiConfig.getDetailWisata(id, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
                 headers: Array<Header>,

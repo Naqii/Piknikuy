@@ -16,51 +16,51 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.lang.Exception
 
-class RestoViewModel: ViewModel() {
+class RestoViewModel : ViewModel() {
 
     private var database = PiknikuyDatabase.getDatabase().restoDao()
 
     private var _listResto = MutableLiveData<ArrayList<ModelResto>>()
-    val listResto : LiveData<ArrayList<ModelResto>> = _listResto
+    val listResto: LiveData<ArrayList<ModelResto>> = _listResto
 
     private var _resto = MutableLiveData<ModelResto>()
-    val resto : LiveData<ModelResto> =_resto
+    val resto: LiveData<ModelResto> = _resto
 
     private var _isFavorite = MutableLiveData<Boolean>()
-    val isFavorite : LiveData<Boolean> = _isFavorite
+    val isFavorite: LiveData<Boolean> = _isFavorite
 
     private var _favorite = database.select()
-    val favorite : LiveData<List<ModelResto>> = _favorite
+    val favorite: LiveData<List<ModelResto>> = _favorite
 
     fun setListResto() {
-            ApiConfig.getListResto( object: AsyncHttpResponseHandler(){
-                override fun onSuccess(
-                    statusCode: Int,
-                    headers: Array<Header>,
-                    responseBody: ByteArray
-                ) {
-                    val result = String(responseBody)
-                    try {
-                        val responseObject = JSONObject(result)
-                        val restoArray = responseObject.getJSONArray("resto")
-                        _listResto.postValue(Helper.listRestoResponse(restoArray))
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
+        ApiConfig.getListResto(object : AsyncHttpResponseHandler() {
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<Header>,
+                responseBody: ByteArray
+            ) {
+                val result = String(responseBody)
+                try {
+                    val responseObject = JSONObject(result)
+                    val restoArray = responseObject.getJSONArray("resto")
+                    _listResto.postValue(Helper.listRestoResponse(restoArray))
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
+            }
 
-                override fun onFailure(
-                    statusCode: Int, headers: Array<Header>,
-                    responseBody: ByteArray,
-                    error: Throwable
-                ) {
-                    Log.d("onFailure", error.message.toString())
-                }
-            })
-        }
+            override fun onFailure(
+                statusCode: Int, headers: Array<Header>,
+                responseBody: ByteArray,
+                error: Throwable
+            ) {
+                Log.d("onFailure", error.message.toString())
+            }
+        })
+    }
 
     fun setDetailResto(id: String) {
-        ApiConfig.getDetailResto(id, object: AsyncHttpResponseHandler(){
+        ApiConfig.getDetailResto(id, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
                 headers: Array<Header>,

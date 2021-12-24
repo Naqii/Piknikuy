@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"/>
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/tv_nama_hotel"
@@ -29,7 +29,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_picture"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_picture" />
 
     <TextView
         android:id="@+id/tv_lokasi_hotel"
@@ -42,7 +42,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nama_hotel"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_nama_hotel" />
 
     <TextView
         android:id="@+id/status"
@@ -74,8 +74,8 @@
         android:id="@+id/tv_rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/rating"
         android:textSize="14sp"
@@ -104,6 +104,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="true"
         android:verticalScrollbarPosition="defaultPosition"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,9 +113,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.213"
         app:srcCompat="@drawable/ic_favorite_border"
-        android:clickable="true"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck"
-        android:focusable="true" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
 
     <ProgressBar
         android:id="@+id/progressBar"

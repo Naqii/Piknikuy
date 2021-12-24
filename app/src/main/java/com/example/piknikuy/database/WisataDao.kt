@@ -11,8 +11,8 @@ import com.example.piknikuy.model.ModelWisata
 @Dao
 interface WisataDao {
 
-    @Query("select * from favorite_wisata" )
-    fun select() : LiveData<List<ModelWisata>>
+    @Query("select * from favorite_wisata")
+    fun select(): LiveData<List<ModelWisata>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(wisata: ModelWisata)
@@ -27,5 +27,5 @@ interface WisataDao {
     fun drop(id: String?)
 
     @Query("SELECT COUNT(*) from favorite_wisata WHERE id = :id")
-    fun num(id: String?) : Int
+    fun num(id: String?): Int
 }

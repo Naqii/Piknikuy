@@ -13,12 +13,12 @@ class WisataAdapter : RecyclerView.Adapter<WisataAdapter.ListViewHolder>() {
     private var onItemClickCallback: OnItemClickCallback? = null
 
     var listWisata = arrayListOf<ModelWisata>()
-    @SuppressLint("NotifyDataSetChanged")
-    set(value) {
-        listWisata.clear()
-        listWisata.addAll(value)
-        notifyDataSetChanged()
-    }
+        @SuppressLint("NotifyDataSetChanged")
+        set(value) {
+            listWisata.clear()
+            listWisata.addAll(value)
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
         val binding =

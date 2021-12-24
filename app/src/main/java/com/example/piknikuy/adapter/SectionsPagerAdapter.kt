@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.piknikuy.view.fragment.*
 
-class SectionsPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(activity) {
+class SectionsPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 
     override fun getItemCount(): Int {
         return 3
@@ -13,11 +13,11 @@ class SectionsPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(
 
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
-        when(position){
+        when (position) {
             0 -> fragment = RestoFragment()
             1 -> fragment = HotelFragment()
             2 -> fragment = WisataFragment()
         }
-        return  fragment as Fragment
+        return fragment as Fragment
     }
 }

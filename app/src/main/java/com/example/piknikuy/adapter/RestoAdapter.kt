@@ -13,15 +13,16 @@ class RestoAdapter : RecyclerView.Adapter<RestoAdapter.ListViewHolder>() {
     private var onItemClickCallback: OnItemClickCallback? = null
 
     var listResto = arrayListOf<ModelResto>()
-    @SuppressLint("NotifyDataSetChanged")
-    set(value) {
-        listResto.clear()
-        listResto.addAll(value)
-        notifyDataSetChanged()
-    }
+        @SuppressLint("NotifyDataSetChanged")
+        set(value) {
+            listResto.clear()
+            listResto.addAll(value)
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
-        val binding = ItemListBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        val binding =
+            ItemListBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         return ListViewHolder(binding)
     }
 

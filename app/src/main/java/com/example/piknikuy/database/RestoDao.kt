@@ -11,8 +11,8 @@ import com.example.piknikuy.model.ModelResto
 @Dao
 interface RestoDao {
 
-    @Query("select * from favorite_resto" )
-    fun select() : LiveData<List<ModelResto>>
+    @Query("select * from favorite_resto")
+    fun select(): LiveData<List<ModelResto>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(resto: ModelResto)
@@ -27,5 +27,5 @@ interface RestoDao {
     fun drop(id: String?)
 
     @Query("SELECT COUNT(*) from favorite_resto WHERE id = :id")
-    fun num(id: String?) : Int
+    fun num(id: String?): Int
 }

@@ -21,46 +21,46 @@ class HotelViewModel : ViewModel() {
     private var database = PiknikuyDatabase.getDatabase().hotelDao()
 
     private var _listHotel = MutableLiveData<ArrayList<ModelHotel>>()
-    val listHotel : LiveData<ArrayList<ModelHotel>> = _listHotel
+    val listHotel: LiveData<ArrayList<ModelHotel>> = _listHotel
 
     private var _hotel = MutableLiveData<ModelHotel>()
-    val hotel : LiveData<ModelHotel> = _hotel
+    val hotel: LiveData<ModelHotel> = _hotel
 
     private var _isFavorite = MutableLiveData<Boolean>()
-    val isFavorite : LiveData<Boolean> = _isFavorite
+    val isFavorite: LiveData<Boolean> = _isFavorite
 
     private var _favorite = database.select()
-    val favorite : LiveData<List<ModelHotel>> = _favorite
+    val favorite: LiveData<List<ModelHotel>> = _favorite
 
     fun setListHotel() {
-            ApiConfig.getListHotel( object: AsyncHttpResponseHandler(){
-                override fun onSuccess(
-                    statusCode: Int,
-                    headers: Array<Header>,
-                    responseBody: ByteArray
-                ) {
-                    val result = String(responseBody)
-                    try {
-                        val responseObject = JSONObject(result)
-                        val restoArray = responseObject.getJSONArray("hotels")
-                        _listHotel.postValue(Helper.listHotelResponse(restoArray))
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
+        ApiConfig.getListHotel(object : AsyncHttpResponseHandler() {
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<Header>,
+                responseBody: ByteArray
+            ) {
+                val result = String(responseBody)
+                try {
+                    val responseObject = JSONObject(result)
+                    val restoArray = responseObject.getJSONArray("hotels")
+                    _listHotel.postValue(Helper.listHotelResponse(restoArray))
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
+            }
 
-                override fun onFailure(
-                    statusCode: Int, headers: Array<Header>,
-                    responseBody: ByteArray,
-                    error: Throwable
-                ) {
-                    Log.d("onFailure", error.message.toString())
-                }
-            })
+            override fun onFailure(
+                statusCode: Int, headers: Array<Header>,
+                responseBody: ByteArray,
+                error: Throwable
+            ) {
+                Log.d("onFailure", error.message.toString())
+            }
+        })
     }
 
     fun setDetailHotel(id: String) {
-        ApiConfig.getDetailHotel(id, object: AsyncHttpResponseHandler(){
+        ApiConfig.getDetailHotel(id, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
                 headers: Array<Header>,

@@ -28,16 +28,19 @@ class FavoriteResto : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.favorite_resto)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        restoViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RestoViewModel::class.java]
-        if(applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+        restoViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[RestoViewModel::class.java]
+        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             binding.rvResto.layoutManager = GridLayoutManager(this, 2)
-        } else  {
+        } else {
             binding.rvResto.layoutManager = LinearLayoutManager(this)
         }
 
         favoriteAdapter = RestoAdapter()
         binding.rvResto.adapter = favoriteAdapter
-        favoriteAdapter.setOnItemClickCallback(object : RestoAdapter.OnItemClickCallback{
+        favoriteAdapter.setOnItemClickCallback(object : RestoAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ModelResto) {
                 val moveIntent = Intent(this@FavoriteResto, DetailResto::class.java)
                 moveIntent.putExtra(DetailResto.EXTRA_RESTO, data.id)
@@ -47,7 +50,7 @@ class FavoriteResto : AppCompatActivity() {
 
         restoViewModel.setListResto()
         progressBarDisplay(true)
-        restoViewModel.favorite.observe(this, { restoItem->
+        restoViewModel.favorite.observe(this, { restoItem ->
             if (restoItem != null) {
                 favoriteAdapter.listResto = ArrayList(restoItem)
                 progressBarDisplay(false)

@@ -28,16 +28,19 @@ class FavoriteHotel : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.favorite_hotel)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        hotelViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[HotelViewModel::class.java]
-        if(applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+        hotelViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[HotelViewModel::class.java]
+        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             binding.rvHotel.layoutManager = GridLayoutManager(this, 2)
-        } else  {
+        } else {
             binding.rvHotel.layoutManager = LinearLayoutManager(this)
         }
 
         favoriteAdapter = HotelAdapter()
         binding.rvHotel.adapter = favoriteAdapter
-        favoriteAdapter.setOnItemClickCallback(object : HotelAdapter.OnItemClickCallback{
+        favoriteAdapter.setOnItemClickCallback(object : HotelAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ModelHotel) {
                 val moveIntent = Intent(this@FavoriteHotel, DetailHotel::class.java)
                 moveIntent.putExtra(DetailHotel.EXTRA_HOTEL, data.id)
@@ -47,7 +50,7 @@ class FavoriteHotel : AppCompatActivity() {
 
         hotelViewModel.setListHotel()
         progressBarDisplay(true)
-        hotelViewModel.favorite.observe(this, { hotelItem->
+        hotelViewModel.favorite.observe(this, { hotelItem ->
             if (hotelItem != null) {
                 favoriteAdapter.listHotel = ArrayList(hotelItem)
                 progressBarDisplay(false)

@@ -10,7 +10,7 @@ import com.example.piknikuy.database.PiknikuyDatabase
 import com.example.piknikuy.database.WisataDao
 import com.example.piknikuy.model.ModelWisata
 
-class WisataProvider: ContentProvider() {
+class WisataProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
         favoriteWisata = PiknikuyDatabase.getDatabase(context as Context).wisataDao()
@@ -45,7 +45,12 @@ class WisataProvider: ContentProvider() {
         return 0
     }
 
-    override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<String>?): Int {
+    override fun update(
+        uri: Uri,
+        values: ContentValues?,
+        selection: String?,
+        selectionArgs: Array<String>?
+    ): Int {
         return 0
     }
 
@@ -54,7 +59,7 @@ class WisataProvider: ContentProvider() {
 
         private const val SCHEME = "content"
         private const val TABLE_NAME = ModelWisata.TABLE_NAME
-        private const val AUTH= "com.example.piknikuy"
+        private const val AUTH = "com.example.piknikuy"
         private val uriMatch = UriMatcher(UriMatcher.NO_MATCH)
         private const val FAVORITE = 1
         private const val FAVORITE_ID = 2

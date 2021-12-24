@@ -12,11 +12,11 @@ import com.example.piknikuy.model.ModelHotel
 @Dao
 interface HotelDao {
 
-    @Query("select * from favorite_hotel" )
-    fun select() : LiveData<List<ModelHotel>>
+    @Query("select * from favorite_hotel")
+    fun select(): LiveData<List<ModelHotel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(resto: ModelHotel)
+    fun insert(hotel: ModelHotel)
 
     @Query("SELECT * from favorite_hotel ORDER BY id ASC")
     fun selectCursor(): Cursor
@@ -28,5 +28,5 @@ interface HotelDao {
     fun drop(id: String?)
 
     @Query("SELECT COUNT(*) from favorite_hotel WHERE id = :id")
-    fun num(id: String?) : Int
+    fun num(id: String?): Int
 }

@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(tableName = TABLE_NAME)
-data class ModelResto (
+data class ModelResto(
 
     @ColumnInfo(name = "id")
     var id: String = "",

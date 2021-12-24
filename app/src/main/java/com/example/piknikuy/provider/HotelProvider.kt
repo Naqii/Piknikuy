@@ -66,7 +66,7 @@ class HotelProvider : ContentProvider() {
 
         private const val SCHEME = "content"
         private const val TABLE_NAME = ModelHotel.TABLE_NAME
-        private const val AUTH= "com.example.piknikuy"
+        private const val AUTH = "com.example.piknikuy"
         private val uriMatch = UriMatcher(UriMatcher.NO_MATCH)
         private const val FAVORITE = 1
         private const val FAVORITE_ID = 2

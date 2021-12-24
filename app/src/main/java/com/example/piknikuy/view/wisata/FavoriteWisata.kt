@@ -28,7 +28,10 @@ class FavoriteWisata : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.favorite_wisata)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        wisataViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[WisataViewModel::class.java]
+        wisataViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[WisataViewModel::class.java]
         if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             favoriteWisataBinding.rvWisata.layoutManager = GridLayoutManager(this, 2)
         } else {
@@ -37,7 +40,7 @@ class FavoriteWisata : AppCompatActivity() {
 
         favoriteAdapter = WisataAdapter()
         favoriteWisataBinding.rvWisata.adapter = favoriteAdapter
-        favoriteAdapter.setOnItemClickCallback(object : WisataAdapter.OnItemClickCallback{
+        favoriteAdapter.setOnItemClickCallback(object : WisataAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ModelWisata) {
                 val moveIntent = Intent(this@FavoriteWisata, DetailWisata::class.java)
                 moveIntent.putExtra(DetailWisata.EXTRA_WISATA, data.id)
